@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -14,8 +15,8 @@
   <!-- Fontawesome 5.11.2 -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/script.js' %}"></script>
 </head>
 
 <body>
@@ -23,23 +24,23 @@
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container-fluid">
 
-      <a href="index.html" class="nav-item nav-link navbar2-custom"><i class="navbar-brand fas fa-duotone fa-hospital"></i><span class="navbar-text " href="index.html">TYK Medical Centre</span></a>
+      <a href="{% url 'index' %}" class="nav-item nav-link navbar2-custom"><i class="navbar-brand fas fa-duotone fa-hospital"></i><span class="navbar-text " href="{% url 'index' %}">TYK Medical Centre</span></a>
 
       <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-menu"><i class="navbar-toggler-icon"></i></a>
       <div class="navbar-collapse collapse" id="navbar-menu">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link navbar-custom ms-auto" href="index.html">Home</a>
-          <a class="nav-item nav-link navbar-custom" href="findadoctor.html">Find a Doctor</a>
+          <a class="nav-item nav-link navbar-custom ms-auto" href="{% url 'index' %}">Home</a>
+          <a class="nav-item nav-link navbar-custom" href="{% url 'findadoctor' %}">Find a Doctor</a>
 
           <div class="dropdown">
             <a class="nav-item nav-link dropdown-toggle navbar-custom" data-toggle="dropdown" href="#services">Our Services</a>
             <div class="dropdown-menu">
-              <a href="ourservices.html" class="dropdown-item small">Physical Therapy and Rehabilitation Services</a>
-              <a href="ourservices.html" class="dropdown-item small">Home Nursing Services</a>
-              <a href="ourservices.html" class="dropdown-item small">Mental Health Care Services</a>
-              <a href="ourservices.html" class="dropdown-item small">Financial Services</a>
-              <a href="ourservices.html" class="dropdown-item small">Prescription Services</a>
-              <a href="ourservices.html" class="dropdown-item small">Dental Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Physical Therapy and Rehabilitation Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Home Nursing Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Mental Health Care Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Financial Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Prescription Services</a>
+              <a href="{% url 'ourservices' %}" class="dropdown-item small">Dental Services</a>
               <div class="dropdown-divider"></div>
 
             </div>
@@ -50,21 +51,21 @@
             <div class="dropdown-menu">
               <h5 class="dropdown-header">COVID-19 Information</h5>
 
-              <a href="healthcareblog.html" class="dropdown-item small">Latest COVID-19 Information</a>
+              <a href="{% url 'healthcareblog' %}" class="dropdown-item small">Latest COVID-19 Information</a>
               <div class="dropdown-divider"></div>
 
               <h5 class="dropdown-header">Our Hospital Updates</h5>
-              <a href="healthcareblog.html" class="dropdown-item small">Latest TYK Medical Centre Updates</a>
+              <a href="{% url 'healthcareblog' %}" class="dropdown-item small">Latest TYK Medical Centre Updates</a>
               <div class="dropdown-divider"></div>
 
               <h5 class="dropdown-header">Educational Materials</h5>
-              <a href="healthcareblog.html" class="dropdown-item small">Free Resources about your health</a>
+              <a href="{% url 'healthcareblog' %}" class="dropdown-item small">Free Resources about your health</a>
 
             </div>
           </div>
 
           <a class="nav-item nav-link navbar-custom" href="#contactAnchor"><i class="fas fa-envelope-open"></i> Contact</a>
-          <a class="nav-item nav-link login navbar4-custom" href="register.html"> Log In/Register</a>
+          <a class="nav-item nav-link login navbar4-custom" href="{% url 'register' %}"> Log In/Register</a>
 
 
         </div>
@@ -74,17 +75,15 @@
 
 
   <div>
-    <link href="./findadoctor.css" rel="stylesheet" />
     <div class="findadoctor-container">
-      <img src="./images/doc4.jpg" alt="image" class="findadoctor-image" />
+      <img src="{% static 'images/doc4.jpg' %}" alt="image" class="findadoctor-image" />
       <span class="findadoctor-text">&gt; Find a Doctor</span>
-      <a href="index.html" class="findadoctor-link ">Home</a>
+      <a href="{% url 'index' %}" class="findadoctor-link ">Home</a>
       <h1 class="findadoctor-text1">Find a Doctor</h1>
     </div>
   </div>
 
   <div>
-    <link href="./findadoccomponent.css" rel="stylesheet" />
     <div class="findadoccomponent-container">
       <select class="findadoccomponent-select">
         <option value="Option 1" selected>Specialities</option>
@@ -102,6 +101,7 @@
       </span>
     </div>
 
+
     <div class="findadoctor-features">
       <h1 class="findadoctor-text06"> <br /><br /><br />
         <span>Medical Specialities</span>
@@ -109,73 +109,73 @@
       </h1>
       <div class="findadoctor-container2">
         <div class="findadoctor-feature-card1">
-          <a class="findadoctor-text09 nav-link customlink" href="specialities.html">
+          <a class="findadoctor-text09 nav-link customlink" href="{% url 'specialities' %}">
             Anaesthesiology &amp; Critical Care
           </a>
-          <img alt="image" src="./images/spec1.webp" class="findadoctor-image1" />
+          <img alt="image" src="{% static 'images/spec1.webp' %}" class="findadoctor-image1" />
         </div>
         <div class="findadoctor-feature-card2">
-          <a class="findadoctor-text10 nav-link customlink" href="specialities.html">Cardiology</a>
+          <a class="findadoctor-text10 nav-link customlink" href="{% url 'specialities' %}">Cardiology</a>
           <br />
-          <img alt="image" src="./images/spec2.jpg" class="findadoctor-image2" />
+          <img alt="image" src="{% static 'images/spec2.jpg' %}" class="findadoctor-image2" />
         </div>
         <div class="findadoctor-feature-card3">
-          <a class="findadoctor-text11 nav-link customlink" href="specialities.html">Ear, Nose &amp; Throat</a><br />
-          <img alt="image" src="./images/spec3.jpg" class="findadoctor-image3" />
+          <a class="findadoctor-text11 nav-link customlink" href="{% url 'specialities' %}">Ear, Nose &amp; Throat</a><br />
+          <img alt="image" src="{% static 'images/spec3.jpg' %}" class="findadoctor-image3" />
           <br />
         </div>
         <div class="findadoctor-feature-card4">
-          <a class="findadoctor-text12 nav-link customlink" href="specialities.html">Endocrinology &amp; Diabetes</a>
-          <img alt="image" src="./images/spec4.jpg" class="findadoctor-image4" />
+          <a class="findadoctor-text12 nav-link customlink" href="{% url 'specialities' %}">Endocrinology &amp; Diabetes</a>
+          <img alt="image" src="{% static 'images/spec4.jpg' %}" class="findadoctor-image4" />
           <br />
         </div>
         <div class="findadoctor-feature-card5">
-          <a class="findadoctor-text13 nav-link customlink" href="specialities.html">Gastroenterology &amp; Hepatology</a>
-          <img alt="image" src="./images/spec5.jpg" class="findadoctor-image5" />
+          <a class="findadoctor-text13 nav-link customlink" href="{% url 'specialities' %}">Gastroenterology &amp; Hepatology</a>
+          <img alt="image" src="{% static 'images/spec5.jpg' %}" class="findadoctor-image5" />
         </div>
         <div class="findadoctor-feature-card6">
-          <a class="findadoctor-text14 nav-link customlink" href="specialities.html">Geriatrics</a><br />
-          <img alt="image" src="./images/spec6.jpg" class="findadoctor-image6" />
+          <a class="findadoctor-text14 nav-link customlink" href="{% url 'specialities' %}">Geriatrics</a><br />
+          <img alt="image" src="{% static 'images/spec6.jpg' %}" class="findadoctor-image6" />
         </div>
         <div class="findadoctor-feature-card7">
-          <a class="findadoctor-text15 nav-link customlink" href="specialities.html">Gynaecology</a><br />
-          <img alt="image" src="./images/spec7.jpg" class="findadoctor-image7" />
+          <a class="findadoctor-text15 nav-link customlink" href="{% url 'specialities' %}">Gynaecology</a><br />
+          <img alt="image" src="{% static 'images/spec7.jpg' %}" class="findadoctor-image7" />
         </div>
         <div class="findadoctor-feature-card8">
-          <a class="findadoctor-text16 nav-link customlink" href="specialities.html">Haematology</a><br />
-          <img alt="image" src="./images/spec8.webp" class="findadoctor-image8" />
+          <a class="findadoctor-text16 nav-link customlink" href="{% url 'specialities' %}">Haematology</a><br />
+          <img alt="image" src="{% static 'images/spec8.webp' %}" class="findadoctor-image8" />
         </div>
         <div class="findadoctor-feature-card9">
-          <a class="findadoctor-text17 nav-link customlink" href="specialities.html">Intensive Care</a><br />
-          <img alt="image" src="./images/spec9.jpg" class="findadoctor-image9" />
+          <a class="findadoctor-text17 nav-link customlink" href="{% url 'specialities' %}">Intensive Care</a><br />
+          <img alt="image" src="{% static 'images/spec9.jpg' %}" class="findadoctor-image9" />
         </div>
         <div class="findadoctor-feature-card10">
-          <a class="findadoctor-text18 nav-link customlink" href="specialities.html">Neurology</a><br />
-          <img alt="image" src="./images/spec10.jpg" class="findadoctor-image10" />
+          <a class="findadoctor-text18 nav-link customlink" href="{% url 'specialities' %}">Neurology</a><br />
+          <img alt="image" src="{% static 'images/spec10.jpg' %}" class="findadoctor-image10" />
         </div>
         <div class="findadoctor-feature-card11">
-          <a class="findadoctor-text19 nav-link customlink" href="specialities.html">Obstetrics & Gynaecology</a>
-          <img alt="image" src="./images/spec11.jpg" class="findadoctor-image11" />
+          <a class="findadoctor-text19 nav-link customlink" href="{% url 'specialities' %}">Obstetrics & Gynaecology</a>
+          <img alt="image" src="{% static 'images/spec11.jpg' %}" class="findadoctor-image11" />
         </div>
         <div class="findadoctor-feature-card12">
-          <a class="findadoctor-text20 nav-link customlink" href="specialities.html">Orthopaedic & Trauma Surgery</a>
-          <img alt="image" src="./images/spec12.webp" class="findadoctor-image12" />
+          <a class="findadoctor-text20 nav-link customlink" href="{% url 'specialities' %}">Orthopaedic & Trauma Surgery</a>
+          <img alt="image" src="{% static 'images/spec12.webp' %}" class="findadoctor-image12" />
         </div>
         <div class="findadoctor-feature-card13">
-          <a class="findadoctor-text21 nav-link customlink" href="specialities.html">Paediatrics</a><br />
-          <img alt="image" src="./images/spec13.jpg" class="findadoctor-image13" />
+          <a class="findadoctor-text21 nav-link customlink" href="{% url 'specialities' %}">Paediatrics</a><br />
+          <img alt="image" src="{% static 'images/spec13.jpg' %}" class="findadoctor-image13" />
         </div>
         <div class="findadoctor-feature-card14">
-          <a class="findadoctor-text22 nav-link customlink" href="specialities.html">Radiology</a><br />
-          <img alt="image" src="./images/spec14.jpeg" class="findadoctor-image14" />
+          <a class="findadoctor-text22 nav-link customlink" href="{% url 'specialities' %}">Radiology</a><br />
+          <img alt="image" src="{% static 'images/spec14.jpeg' %}" class="findadoctor-image14" />
         </div>
         <div class="findadoctor-feature-card15">
-          <a class="findadoctor-text23 nav-link customlink" href="specialities.html">Rehabilitation Medicine</a>
-          <img alt="image" src="./images/spec15.jpg" class="findadoctor-image15" />
+          <a class="findadoctor-text23 nav-link customlink" href="{% url 'specialities' %}">Rehabilitation Medicine</a>
+          <img alt="image" src="{% static 'images/spec15.jpg' %}" class="findadoctor-image15" />
         </div>
         <div class="findadoctor-feature-card16">
-          <a class="findadoctor-text24 nav-link customlink" href="specialities.html">Urology</a><br />
-          <img alt="image" src="./images/spec16.jpg" class="findadoctor-image16" />
+          <a class="findadoctor-text24 nav-link customlink" href="{% url 'specialities' %}">Urology</a><br />
+          <img alt="image" src="{% static 'images/spec16.jpg' %}" class="findadoctor-image16" />
         </div>
       </div>
     </div>
@@ -187,10 +187,10 @@
           <h6 class="text-secondary">Home</h6>
           <hr>
           <p>
-            <a href="index.html">Home</a>
-            <br><a href="findadoctor.html">Find a Doctor</a>
-            <br><a href="ourservices.html">Our Services</a>
-            <br><a href="healthcareblog.html">Healthcare Blog</a>
+            <a href="{% url 'index' %}">Home</a>
+            <br><a href="{% url 'findadoctor' %}">Find a Doctor</a>
+            <br><a href="{% url 'ourservices' %}">Our Services</a>
+            <br><a href="{% url 'healthcareblog' %}">Healthcare Blog</a>
             <br><a href="#contactAnchor">Contact</a>
           </p>
         </div>
@@ -199,7 +199,7 @@
           <h6 class="text-secondary">Find a Doctor</h6>
           <hr>
           <p>
-            <a href="findadoctor.html">Make an appointment</a>
+            <a href="{% url 'findadoctor' %}l">Make an appointment</a>
           </p>
         </div>
 
@@ -207,12 +207,12 @@
           <h6 class="text-secondary">Our Services</h6>
           <hr>
           <p>
-            <a href="ourservices.html">Physical Therapy and Rehabilitation Services</a>
-            <br><a href="ourservices.html">Home Nursing Services</a>
-            <br><a href="ourservices.html">Mental Health Care Services</a>
-            <br><a href="ourservices.html">Financial Services</a>
-            <br><a href="ourservices.html">Prescription Services</a>
-            <br><a href="ourservices.html">Dental Services</a>
+            <a href="{% url 'ourservices' %}">Physical Therapy and Rehabilitation Services</a>
+            <br><a href="{% url 'ourservices' %}">Home Nursing Services</a>
+            <br><a href="{% url 'ourservices' %}">Mental Health Care Services</a>
+            <br><a href="{% url 'ourservices' %}">Financial Services</a>
+            <br><a href="{% url 'ourservices' %}">Prescription Services</a>
+            <br><a href="{% url 'ourservices' %}">Dental Services</a>
 
           </p>
 
@@ -223,9 +223,9 @@
           <h6 class="text-secondary">Healthcare Blog</h6>
           <hr>
           <p>
-            <a href="ourservices.html">Latest-COVID-19 Information</a>
-            <br><a href="ourservices.html">Latest TYK Medical Centre Updates</a>
-            <br><a href="ourservices.html">Free Resources about your health</a>
+            <a href="{% url 'ourservices' %}">Latest-COVID-19 Information</a>
+            <br><a href="{% url 'ourservices' %}">Latest TYK Medical Centre Updates</a>
+            <br><a href="{% url 'ourservices' %}">Free Resources about your health</a>
 
 
           </p>

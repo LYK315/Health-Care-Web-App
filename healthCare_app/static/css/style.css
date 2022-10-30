@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .navbar {
   background-color: transparent;
   transition: background-color 1s ease 0s;
@@ -154,14 +158,12 @@ h1 {
   padding: var(--dl-space-space-threeunits);
   position: relative;
   max-width: 100%;
-  justify-content: center;
   background-color: #1A3B70;
-  align-items: center;
 }
 
 .stats-stat {
   top: 10%;
-  left: 5%;
+  left: 2%;
   display: flex;
   padding: 1%;
   position: absolute;
@@ -192,7 +194,7 @@ h1 {
 
 .stats-stat1 {
   top: 10%;
-  left: 22%;
+  left: 19%;
   display: flex;
   padding: 1%;
   width: 200px;
@@ -224,7 +226,7 @@ h1 {
 
 .stats-stat2 {
   top: 10%;
-  left: 37%;
+  left: 34%;
   display: flex;
   padding: 1%;
   width: 200px;
@@ -256,7 +258,7 @@ h1 {
 
 .stats-stat3 {
   top: 10%;
-  left: 52%;
+  left: 49%;
   display: flex;
   padding: 1%;
   width: auto;
@@ -288,7 +290,7 @@ h1 {
 
 .stats-stat4 {
   top: 10%;
-  left: 68%;
+  left: 65%;
   display: flex;
   padding: 1%;
   width: 200px;
@@ -320,7 +322,7 @@ h1 {
 
 .stats-stat5 {
   top: 10%;
-  left: 83%;
+  left: 80%;
   display: flex;
   padding: 1%;
   width: 200px;
@@ -1113,14 +1115,14 @@ h1 {
 }
 
 .findadoctor-features {
-  left: 135px;
-  width: 90%;
+  width: 100%;
   top: 70%;
   height: 700px;
   display: flex;
-  padding: var(--dl-space-space-threeunits);
+  padding: 10px;
   position: absolute;
   flex-direction: column;
+  margin: auto;
 }
 
 .customlink {
@@ -1128,20 +1130,22 @@ h1 {
   font-size: 25px;
   text-align: center;
 }
+
 .findadoctor-text06 {
   font-size: 30px;
   top: 30%;
   margin-bottom: var(--dl-space-space-threeunits);
-  margin-left: 0;
-  margin-right: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .findadoctor-container2 {
   flex: 0 0 auto;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   display: grid;
   grid-gap: var(--dl-space-space-twounits);
-  align-items: flex-start;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
@@ -1150,13 +1154,14 @@ h1 {
   display: flex;
   padding: var(--dl-space-space-unit);
   max-width: var(--dl-size-size-maxwidth);
-  box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
+  box-shadow: 10px 10px 10px 10px rgba(18, 18, 18, 0.1);
   transition: 0.3s;
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
   height: 220px;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card1:hover {
@@ -1190,7 +1195,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card2:hover {
@@ -1224,7 +1230,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card3:hover {
@@ -1256,7 +1263,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card4:hover {
@@ -1288,7 +1296,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card5:hover {
@@ -1320,7 +1329,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card6:hover {
@@ -1352,7 +1362,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card7:hover {
@@ -1384,7 +1395,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card8:hover {
@@ -1417,7 +1429,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card9:hover {
@@ -1449,7 +1462,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card10:hover {
@@ -1481,7 +1495,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card11:hover {
@@ -1513,7 +1528,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card12:hover {
@@ -1545,7 +1561,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card13:hover {
@@ -1577,7 +1594,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card14:hover {
@@ -1609,7 +1627,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card15:hover {
@@ -1641,7 +1660,8 @@ h1 {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 15%;
+  margin: auto;
+  margin-bottom: 20%;
 }
 
 .findadoctor-feature-card16:hover {
