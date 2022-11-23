@@ -140,3 +140,4 @@ GitHub.sublime-settings
 # Manually add to ignore files
 /healthCare_app/views.py
 /healthCare_app/templates/
+templates/

@@ -19,7 +19,7 @@ firebaseConfig = {
     'measurementId': "G-WM3FSPBPDV",
     'serviceAccount': "C:\\Users\\ben_l\\OneDrive\\Desktop\\Uni Stuff\\Web Development\\health-care-web-212e0-firebase-adminsdk-nyf5g-9ba2dd4249.json"
 }
-#as
+
 # Initialize Firebase
 firebase = pyrebase.initialize_app(firebaseConfig)
 authenticate = firebase.auth()
