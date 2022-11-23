@@ -1,0 +1,479 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Find a Doctor </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Fontawesome 5.11.2 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Titillium Web;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-scheme-green100);
+      background-color: var(--dl-color-scheme-yellow20);
+
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+    data-tag="font" />
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- CSS Link -->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/find-a-doctor.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+</head>
+
+<style>
+  /*the container must be positioned relative:*/
+  .autocomplete {
+    position: relative;
+    display: block;
+  }
+
+  .autocomplete-items {
+    position: relative;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    height: auto;
+    max-height: 300px;
+    overflow-y: scroll;
+    width: 410px;
+    margin-left: 250px;
+  }
+
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+</style>
+
+<body>
+  <div>
+    <div class="find-a-doctor-container">
+
+      <nav>
+        <div class="navbar-logo">
+          <img alt="image" src="{% static 'public/playground_assets/group_2.svg' %}" class="navbar-image" />
+          <a class="brand-Name" href="{% url 'index' %}">
+            <span class="navbar-text01">TYK</span>
+            <span>Medical Centre</span>
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <label for="btn" class="icon">
+          <span class="fa fa-bars"></span>
+        </label>
+
+        <input type="checkbox" id="btn">
+        <ul>
+          <li><a href="{% url 'index' %}" class="navbar-text">Home</a></li>
+          <li><a href="{% url 'find-a-doctor' %}" class="navbar-text">Find A Doctor</a></li>
+          <li><a href="{% url 'our-services' %}" class="navbar-text">Our Services</a></li>
+          <li><a href="{% url 'healthcare-blog' %}" class="navbar-text">Healthcare Blog</a></li>
+
+          {% if 'uid' in request.session %}
+          <li>
+            <label for="btn-1" class="show">{{ usrDetail.name }}</label>
+            <a href="#" class="btn-register">{{ usrDetail.name }}</a>
+            <input type="checkbox" id="btn-1" class="checkBtn">
+            <ul>
+              <li btn-logout><a href="{% url 'logout' %}" class="navbar-text-1">Log Out</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li><a href="{% url 'register' %}" class="btn-register">Log In / Register</a></li>
+          {% endif %}
+
+          <li>
+            <label for="btn-2" class="show">Contact Us</label>
+            <a href="https://wa.me/message/FDT76UARAL22O1" class="btn-contactus" target="_blank">Contact Us</a>
+            <input type="checkbox" id="btn-2" onclick="parent.open('https://wa.me/message/FDT76UARAL22O1')">
+          </li>
+        </ul>
+      </nav>
+
+      <div class="find-a-doctor-hero">
+        <h1 class="find-a-doctor-text007">
+          <span>Find A Doctor</span>
+          <br />
+        </h1>
+        <a class="find-a-doctor-button2 button" href="#down">Get Started</a>
+      </div>
+
+      <div class="find-a-doctor-banner" id="down">
+        <select class="find-a-doctor-select" name="specialties" id="specialties">
+          <option value="0">Specialty</option>
+          {% for specialtyList, title, imgUrl in combineList %}
+          <option value="{{specialtyList}}">{{title}}</option>
+          {% endfor %}
+        </select>
+        <input type="text" placeholder="Find a Doctor" class="find-a-doctor-textinput" id="findDoctor" />
+        <button class="find-a-doctor-button3" id="btn-search">Search</button>
+      </div>
+
+      <div class="find-a-doctor-features">
+        <h1 class="find-a-doctor-text011">Discover our Specialties</h1>
+
+        <div class="find-a-doctor-container01">
+          {% for specialtyList, title, imgUrl in combineList_2 %}
+          <div class="find-a-doctor-feature-card">
+            <h2 class="find-a-doctor-text">
+              <a href="{% url 'specialty' %}?specialtyId={{specialtyList}}&specialty={{title}}">{{ title }}</a>
+            </h2>
+            <img alt="image" src={{ imgUrl }} class="find-a-doctor-image" />
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button class="btn-top" id="btnTop"><span class="fa fa-angle-up"></span></button>
+
+      <footer class="footer-container">
+        <div class="footer-links-container">
+          <div class="footer-content-container">
+            <div class="footer-column">
+              <a class="footer-text-title">Home</a>
+              <a class="footer-text" href="{% url 'index' %}">Home</a>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Find a Doctor</a>
+              <a class="footer-text" href="{% url 'our-services' %}">Our Services</a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">Healthcare Blog</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Find a Doctor</span>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Make an appointment</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Our Services</span>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                <span>Physical Therapy and Rehabilitation Services</span>
+                <br />
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Home Nursing Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Mental Health Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Prescription Services
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Healthcare Blog</span>
+              <a class="ofooter-text" href="{% url 'healthcare-blog' %}">
+                Latest COVID-19 Information
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Latest TYK Medical Centre
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Free Resources for Health
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Contact</span>
+              <span class="footer-text">+0391191100</span>
+              <span class="footer-text">
+                Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor, Malaysia
+              </span>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Follow</span>
+              <span class="footer-text">Instagram</span>
+              <span class="footer-text">Twitter</span>
+              <span class="footer-text">Facebook</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    var dr_ID = "";
+    var filter_specialty = []
+
+    // Autocomplete Suggestion Function
+    function autocomplete(inp, arr) {
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i][1].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i][1].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i][1].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' id='" + arr[i][0] + "' value='" + arr[i][1] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function (e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = "Dr. " + this.getElementsByTagName("input")[0].value;
+              dr_ID = this.getElementsByTagName("input")[0].id;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+      });
+    }
+
+    // An array containing all the doctors names in the TYK
+    var doctors = {{ allDoctor| safe}};
+    var doctorID = {{ doctorID| safe}};
+    var specialtyID = {{ specialtyID| safe}};
+    var doctorList = [];
+    for (var i = 0; i < doctors.length; i++) {
+      doctorList.push([doctorID[i], doctors[i], specialtyID[i]]);
+    }
+
+    // initiate the autocomplete function on the "findDoctor" element, and pass along the doctors array as possible autocomplete values: 
+    autocomplete(document.getElementById("findDoctor"), doctorList);
+
+    // Navigate to Doctor Information
+    document.getElementById('btn-search').addEventListener("click", function () {
+      window.location.href = "{% url 'doctors-information' %}?drID=" + dr_ID;
+    });
+
+    $("#specialties").change(function () {
+      if ($('#specialties option:selected').val() == '0') {
+        autocomplete(document.getElementById("findDoctor"), doctorList);
+      } else {
+        for (var i = 0; i < doctors.length; i++) {
+          if (doctorList[i][2] == $('#specialties option:selected').val()) {
+            filter_specialty.push(doctorList[i]);
+          }
+        }
+        autocomplete(document.getElementById("findDoctor"), filter_specialty);
+      }
+    });
+
+    var btnTop = document.getElementById('btnTop');
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction (){
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+        btnTop.style.display = 'block';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    }
+
+    btnTop.addEventListener('click', ()=>{
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+
+</body>
+
+</html>
+
+<!-- Reference -->
+<!-- 
+  Auto Complete Suggestion: https://www.w3schools.com/howto/howto_js_autocomplete.asp
+-->

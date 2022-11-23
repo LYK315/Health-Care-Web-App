@@ -1,0 +1,317 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Log In/Register</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- CSS Links -->
+  <link href="{% static 'css/register.css' %}" text="text/css" rel="stylesheet">
+</head>
+
+<!-- Style for Pop Up Alert -->
+<style>
+  .alert {
+    background: #ffdb9b;
+    padding: 18px 50px 18px 40px;
+    position: absolute;
+    width: max-content;
+    z-index: 1;
+    right: 0px;
+    top: 10px;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 8px solid #ffa502;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .alert.show {
+    animation: show_slide 1s ease forwards;
+  }
+
+  @keyframes show_slide {
+    0% {
+      transform: translateX(100%);
+    }
+
+    40% {
+      transform: translateX(-10%);
+    }
+
+    80% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  .alert.hide {
+    display: none;
+  }
+
+  .alert .fa-exclamation-circle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ce8500;
+    font-size: 30px;
+  }
+
+  .alert .msg {
+    padding: 0 20px;
+    font-size: 18px;
+    color: rgb(164, 13, 13);
+  }
+
+  .alert .close-btn {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffd080;
+
+    padding: 20px 18px;
+    cursor: pointer;
+  }
+
+  .close-btn:hover {
+    background: #ffc766;
+  }
+
+  .close-btn .fa-times {
+    color: #ce8500;
+    font-size: 22px;
+    line-height: 40px;
+  }
+</style>
+
+<body>
+  <div class="hero">
+
+    <div id="alertMsg" class="alert hide">
+      <span class="fas fa-exclamation-circle"></span>
+      <span id="alertMsgBox" class="msg">Warning : This is a warning alert !</span>
+      <span class="close-btn">
+        <span class="fas fa-times"></span>
+      </span>
+    </div>
+
+    {% if msg == "fail" %}
+    <script>
+      $('#alertMsgBox').text("Failed to Register Account.");
+      $('#alertMsg').addClass("show");
+      $('#alertMsg').removeClass("hide");
+    </script>
+    {% elif msg == "success" %}
+    <script>
+      $('#alertMsgBox').text("Account Registered Successfully.");
+      $('#alertMsg').addClass("show");
+      $('#alertMsg').removeClass("hide");
+    </script>
+    {% elif msg == "inputError" %}
+    <script>
+      $('#alertMsgBox').text("Invalid Credentials. Please Try Again.");
+      $('#alertMsg').addClass("show");
+      $('#alertMsg').removeClass("hide");
+    </script>
+    {% endif %}
+
+    <div id="form" class="form-box">
+      <div class="button-box">
+        <div id="btn-color"></div>
+        <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login" class="input-group" action="/postLogin/" onsubmit="return loginBtn()" method="post">
+        {% csrf_token %}
+        <input type="text" class="input-field" name="email" placeholder="Email" required>
+        <input type="password" class="input-field" name="psw" placeholder="Password" id="input-psw-login" required>
+        <input type="checkbox" id="showPsw" class="check-box" onchange="showPassowrd()"><span class="span-form">Show Password</span>
+        <button type="submit" class="submit-btn">Log In</button>
+      </form>
+
+
+      <!-- Register Form -->
+      <form id="register" class="input-group" action="/postRegister/" onsubmit="return registerBtn()" method="post">
+        {% csrf_token %}
+
+        <div class="input-group-register">
+          <input type="text" class="input-field" id="input-fullName" name="name" placeholder="Fulll Name" required>
+          <input type="email" class="input-field" id="input-email" name="email" placeholder="Email" required>
+          <input type="text" class="input-field" id="input-phoneNum" name="number" placeholder="Phone Number" required>
+          <input type="date" class="input-field" id="input-dob" name="dob" placeholder="Date of Birth" required>
+
+          <div class="psw-field">
+            <input type="password" class="input-field input-psw-icon" id="input-psw" name="psw" placeholder="Password"
+              required>
+            <i class="far fa-eye icon-eye" id="show-psw"></i>
+            <i class="far fa-eye-slash icon-eye hidden" id="hide-psw"></i>
+          </div>
+
+          <div class="psw-field">
+            <input type="password" class="input-field input-psw-icon" id="input-psw-confirm" name="confirmPsw"
+              placeholder="Confirm Password" oninput="checkPwd()" required>
+            <i class="far fa-eye icon-eye" id="show-psw-cfm"></i>
+            <i class="far fa-eye-slash icon-eye hidden" id="hide-psw-cfm"></i>
+          </div>
+
+          <span id="psw_Check" hidden class="input-check">Password does not match</span>
+
+          <br><br>
+          <div class="gender-title">Gender</div>
+          <div class="gender-details">
+            <!-- 1 - Male | 2 - Female | 3 - Prefer Not To Say -->
+            <input type="radio" name="genderSelect" id="dot-1" value="1">
+            <input type="radio" name="genderSelect" id="dot-2" value="2">
+            <input type="radio" name="genderSelect" id="dot-3" value="3">
+
+            <div class="category">
+              <!-- Male -->
+              <label for="dot-1">
+                <span class="dot one span-form"></span>
+                <span class="gender span-form">Male</span>
+              </label>
+
+              <!-- Female -->
+              <label for="dot-2">
+                <span class="dot two span-form"></span>
+                <span class="gender span-form">Female</span>
+              </label>
+            </div>
+
+            <span id="gender_Check" hidden class="input-check">Please select gender</span>
+          </div>
+        </div>
+
+        <input type="checkbox" class="check-box" id="check_terms"><span class="span-form">I agree to the terms &
+          conditions</span>
+        <button type="submit" class="submit-btn">Register</button>
+
+      </form>
+    </div>
+  </div>
+</body>
+
+<script>
+  var loginForm = document.getElementById('login');
+  var registerForm = document.getElementById('register');
+  var btnColor = document.getElementById('btn-color');
+  var box = document.getElementById('form');
+  var gender = "empty";
+
+  function register() {
+    loginForm.style.left = "-400px";
+    registerForm.style.left = "50px";
+    btnColor.style.width = "125px"
+    btnColor.style.left = "95px";
+    box.style.height = "480px";
+  }
+
+  function login() {
+    loginForm.style.left = "50px";
+    registerForm.style.left = "450px";
+    btnColor.style.width = "110px"
+    btnColor.style.left = "0px";
+    box.style.height = "400px";
+  }
+
+  function checkPwd() {
+    if ($('#input-psw').val() != $('#input-psw-confirm').val()) {
+      $('#psw_Check').removeAttr("hidden");
+    } else {
+      $('#psw_Check').attr("hidden", "hidden");
+    }
+  }
+
+  function registerBtn() {
+    if (document.querySelector('input[name="genderSelect"]:checked') != null) {
+      $('#gender_Check').attr("hidden", "hidden");
+    } else {
+      $('#gender_Check').removeAttr("hidden");
+      return false;
+    }
+
+    if ($('#input-psw').val() != $('#input-psw-confirm').val()) {
+      $('#psw_Check').removeAttr("hidden");
+      return false;
+    } else if (!document.getElementById('check_terms').checked) {
+      alert("Please Read Terms & Conditions");
+      return false;
+    } else {
+      document.getElementById('register').submit();
+    }
+  }
+
+  // Pending for Remember Me funciton
+  function loginBtn() {
+    if (!document.getElementById('rmbPsw').checked) {
+      return true;
+    } else {
+      return true;
+    }
+  }
+
+  function showPassowrd() {
+    if ($('#showPsw').is(":checked")) {
+      $('#input-psw-login').attr("type", 'text');
+    } else {
+      $('#input-psw-login').attr("type", 'password');
+    }
+  }
+
+  // Hide Alert
+  $('.close-btn').click(function () {
+    $('#alertMsg').addClass("hide");
+    $('#alertMsg').removeClass("show");
+  });
+
+  //Date Picker Flatpickr
+  flatpickr("#input-dob", {});
+
+  // Hide or Show Password
+  $('#show-psw').click(function () {
+    $('#show-psw').addClass('hidden');
+    $('#hide-psw').removeClass('hidden');
+    $('#input-psw').attr("type", 'text');
+  });
+
+  $('#hide-psw').click(function () {
+    $('#hide-psw').addClass('hidden');
+    $('#show-psw').removeClass('hidden');
+    $('#input-psw').attr("type", 'password');
+  });
+
+  $('#show-psw-cfm').click(function () {
+    $('#show-psw-cfm').addClass('hidden');
+    $('#hide-psw-cfm').removeClass('hidden');
+    $('#input-psw-confirm').attr("type", 'text');
+  });
+
+  $('#hide-psw-cfm').click(function () {
+    $('#hide-psw-cfm').addClass('hidden');
+    $('#show-psw-cfm').removeClass('hidden');
+    $('#input-psw-confirm').attr("type", 'password');
+  });
+
+</script>
+
+</html>

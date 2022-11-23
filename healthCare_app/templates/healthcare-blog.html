@@ -1,0 +1,505 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Healthcare Blog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Fontawesome 5.11.2 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Titillium Web;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-scheme-green100);
+      background-color: var(--dl-color-scheme-yellow20);
+
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+    data-tag="font" />
+  <!--This is the head section-->
+  <!-- <script type="text/javascript"> ... </script> -->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/healthcare-blog.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div>
+    <div class="healthcare-blog-container">
+
+      <nav>
+        <div class="navbar-logo">
+          <img alt="image" src="{% static 'public/playground_assets/group_2.svg' %}" class="navbar-image" />
+          <a class="brand-Name" href="{% url 'index' %}">
+            <span class="navbar-text01">TYK</span>
+            <span>Medical Centre</span>
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <label for="btn" class="icon">
+          <span class="fa fa-bars"></span>
+        </label>
+
+        <input type="checkbox" id="btn">
+        <ul>
+          <li><a href="{% url 'index' %}" class="navbar-text">Home</a></li>
+          <li><a href="{% url 'find-a-doctor' %}" class="navbar-text">Find A Doctor</a></li>
+          <li><a href="{% url 'our-services' %}" class="navbar-text">Our Services</a></li>
+          <li><a href="{% url 'healthcare-blog' %}" class="navbar-text">Healthcare Blog</a></li>
+
+          {% if 'uid' in request.session %}
+          <li>
+            <label for="btn-1" class="show">{{ usrDetail.name }}</label>
+            <a href="#" class="btn-register">{{ usrDetail.name }}</a>
+            <input type="checkbox" id="btn-1" class="checkBtn">
+            <ul>
+              <li btn-logout><a href="{% url 'logout' %}" class="navbar-text-1">Log Out</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li><a href="{% url 'register' %}" class="btn-register">Log In / Register</a></li>
+          {% endif %}
+
+          <li>
+            <label for="btn-2" class="show">Contact Us</label>
+            <a href="https://wa.me/message/FDT76UARAL22O1" class="btn-contactus" target="_blank">Contact Us</a>
+            <input type="checkbox" id="btn-2" onclick="parent.open('https://wa.me/message/FDT76UARAL22O1')">
+          </li>
+        </ul>
+      </nav>
+
+      <div class="healthcare-blog-hero">
+        <div class="healthcare-blog-container01">
+          <h1 class="healthcare-blog-text007">Healthcare Blog</h1>
+          <span class="healthcare-blog-text008">
+            We all want better healthcare, sooner and the potential is there
+            to make it happen: New technology, new breakthroughs, new ideas.
+            Find out what our specialists have to say on the issues that
+            matter.
+          </span>
+        </div>
+      </div>
+      <div class="healthcare-blog-news1">
+        <h1 class="healthcare-blog-text009">Latest COVID-19 Information</h1>
+        <img alt="image"
+          src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDF8fGNvdmlkMTl8ZW58MHx8fHwxNjY3NTM3MTE4&amp;ixlib=rb-4.0.3&amp;w=300"
+          class="healthcare-blog-image1" />
+        <div class="healthcare-blog-testimonial">
+          <span class="healthcare-blog-text010">
+            <span>
+              As of 16 October 2022, a total of 4 867 192 confirmed cases and
+              36 417 deaths from COVID19 have been reported in Malaysia. The
+              overall case fatality rate is 0.7%.
+            </span>
+            <br />
+            <br />
+            <span>
+              • In the past 14 days, Malaysia reported a decrease (6.6%) in
+              new cases compared to the&nbsp;
+            </span>
+            <span>previous two-week period.</span>
+            <br />
+            <br />
+            <span>
+              • A total of 23 327 new cases were reported in the past 14 days.
+              Of the newly reported cases,&nbsp;
+            </span>
+            <span>99.7% were locally acquired.</span>
+            <br />
+            <br />
+            <span>
+              • A total of 42 deaths were reported these past two weeks, a
+              33.3% decrease compared to the&nbsp;
+            </span>
+            <span>
+              previous two-week period. The case fatality rate for the past
+              two weeks was 0.2%.
+            </span>
+            <br />
+            <br />
+            <span>
+              • The current COVID-19 intensive care unit (ICU) utilization
+              rate is 9.8%, and the current COVID19 hospital bed utilization
+              rate is 13.3%.
+            </span>
+            <br />
+            <br />
+            <span>
+              • In the past two weeks, 2 out of the 16 states/territories
+              (Selangor and FT Putrajaya) reported&nbsp;
+            </span>
+            <span>
+              an increase in new COVID-19 cases compared to the previous
+              two-week period.
+            </span>
+            <br />
+            <br />
+            <span>
+              • The highest 14-day incidence rates per 100 000 population were
+              recorded in FT Putrajaya&nbsp;
+            </span>
+            <span>(323.9), and FT Kuala Lumpur (286.8).</span>
+            <br />
+            <br />
+            <span>
+              • In the past two weeks, 3 out of the 16 states/territories
+              (Melaka, Pahang and Pulau Pinang)&nbsp;
+            </span>
+            <span>
+              reported an increase in COVID-19 deaths compared to the previous
+              two-week period.
+            </span>
+            <br />
+            <br />
+            <span>
+              • As of 16 October 2022, 84.3% of Malaysia’s total population
+              (98.2% of the adult population,&nbsp;
+            </span>
+            <span>
+              92.2% of the adolescent (12-17yrs) population and 43.3% of
+              children (5-11yrs)) have received&nbsp;
+            </span>
+            <span>
+              their second dose of the COVID-19 vaccine. An estimated 49.7% of
+              the total population has&nbsp;
+            </span>
+            <span>received the third dose.</span>
+            <br />
+            <br />
+            <span>
+              • In recent weeks, the number of new COVID-19 cases and COVID-19
+              deaths have been&nbsp;
+            </span>
+            <span>
+              decreasing. The ICU usage also remains relatively low.
+            </span>
+            <br />
+            <br />
+            <span>
+              • In the past 2 weeks, 100 whole genome sequencing (WGS) samples
+              were submitted to&nbsp;
+            </span>
+            <span>
+              GISAID. The major circulating variant was BA.5 (82%). No XBB
+              variant was identified.
+            </span>
+          </span>
+        </div>
+        <a class="healthcare-blog-text053"
+          href="https://www.who.int/malaysia/internal-publications-detail/covid-19-in-malaysia-situation-report-89">
+          Source : World Health Organization
+        </a>
+      </div>
+      <div class="healthcare-blog-news2">
+        <h1 class="healthcare-blog-text054">
+          Latest TYK Medical Centre Updates
+        </h1>
+        <img alt="image"
+          src="https://images.unsplash.com/photo-1653130892179-98a1a5a19f32?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDU4fHx1cGRhdGVzfGVufDB8fHx8MTY2NzUzODIyNQ&amp;ixlib=rb-4.0.3&amp;w=300"
+          class="healthcare-blog-image2" />
+        <div class="healthcare-blog-testimonial1">
+          <span class="healthcare-blog-text055">
+            <span class="healthcare-blog-text056">
+              Update on temporary changes to TYK Medical Centre urgent
+              treatment centre
+            </span>
+            <br class="healthcare-blog-text057" />
+            <br class="healthcare-blog-text058" />
+            <span class="healthcare-blog-text059">23rd November 2022</span>
+            <br class="healthcare-blog-text060" />
+            <br class="healthcare-blog-text061" />
+            <span class="healthcare-blog-text062">
+              Temporary changes to the TYK Medical Centre urgent treatment
+              centre (UTC) opening hours will remain in place until the New
+              Year.&nbsp;
+            </span>
+            <span class="healthcare-blog-text063">
+              The UTC is open from 8am to 8.30pm, with patients being booked
+              in until 7.30pm only.
+            </span>
+            <br class="healthcare-blog-text064" />
+            <br class="healthcare-blog-text065" />
+            <span class="healthcare-blog-text066">
+              To help better manage the demand for the UTC, and to ensure
+              patients are receiving the right care in the right place, please
+              contact your GP for dressing changes. The UTC is continuing to
+              do first dressings and changing second, complex, dressings or
+              those which have originated from the UTC.
+            </span>
+            <br class="healthcare-blog-text067" />
+            <br class="healthcare-blog-text068" />
+            <br class="healthcare-blog-text069" />
+            <br class="healthcare-blog-text070" />
+          </span>
+        </div>
+      </div>
+      <div class="healthcare-blog-pricing">
+        <div class="healthcare-blog-card">
+          <div class="healthcare-blog-container04">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1599814516324-66aa0bf16425?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDh8fGRpYWJldGVzfGVufDB8fHx8MTY2NzQ4NzU3Mg&amp;ixlib=rb-4.0.3&amp;h=300"
+              class="healthcare-blog-image3" />
+          </div>
+          <div class="healthcare-blog-container05">
+            <h1 class="healthcare-blog-text071">
+              A Guidebook On Managing Diabetes
+            </h1>
+            <span class="healthcare-blog-text072">
+              The medical term for diabetes is Diabetes Mellitus. It is
+              derived from the Greek word diabetes meaning “to pass through”,
+              and the Latin word mellitus meaning “honeyed or sweet”.
+            </span>
+          </div>
+          <a class="healthcare-blog-button2 button"
+            href="{% static 'public/playground_assets/a-guidebook-on-managing-diabetes.pdf' %}">Learn More</a>
+        </div>
+        <div class="healthcare-blog-card1">
+          <div class="healthcare-blog-container06">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1559757175-053139280de2?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDJ8fGtpZG5leXxlbnwwfHx8fDE2Njc1NDAyODE&amp;ixlib=rb-4.0.3&amp;h=300"
+              class="healthcare-blog-image4" />
+          </div>
+          <div class="healthcare-blog-container07">
+            <h1 class="healthcare-blog-text073">
+              Kidney Transplant - Donor Information
+            </h1>
+            <span class="healthcare-blog-text074">
+              <span>
+                Kidney transplantation is a surgical procedure involving the
+                transferring of a kidney from one person (“donor”) to another
+                person (“recipient”) whose kidney has failed due to certain
+                medical conditions.
+              </span>
+              <span></span>
+            </span>
+          </div>
+          <a class="healthcare-blog-button3 button"
+            href="{% static 'public/playground_assets/kidney-transplant-donor-information.pdf' %}">Learn More</a>
+        </div>
+        <div class="healthcare-blog-card2">
+          <div class="healthcare-blog-container08">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214280352-db292c05fd80?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDF8fHJhZGlvdGhlcmFweXxlbnwwfHx8fDE2Njc1NDA0ODk&amp;ixlib=rb-4.0.3&amp;h=300"
+              class="healthcare-blog-image5" />
+          </div>
+          <div class="healthcare-blog-container09">
+            <h1 class="healthcare-blog-text077">
+              <span>Bladder &amp; Bowel Preparation for <br />Radiotherapy</span>
+              <span>to the Pelvis</span>
+            </h1>
+            <span class="healthcare-blog-text080">
+              <span>
+                The advanced radiotherapy system offers sophisticated imaging
+                and motion management, sub-milimitre dosage delivery accuracy,
+                and rotating ability to give fast and powerful treatments that
+                often last only a few minutes.
+              </span>
+              <span></span>
+            </span>
+          </div>
+          <a class="healthcare-blog-button4 button"
+            href="{% static 'public/playground_assets/bladder-bowel-preparation-for-radiotherapy-to-the-pelvis.pdf' %}">Learn
+            More</a>
+        </div>
+      </div>
+
+      <button class="btn-top" id="btnTop"><span class="fa fa-angle-up"></span></button>
+
+      <footer class="footer-container">
+        <div class="footer-links-container">
+          <div class="footer-content-container">
+            <div class="footer-column">
+              <a class="footer-text-title">Home</a>
+              <a class="footer-text" href="{% url 'index' %}">Home</a>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Find a Doctor</a>
+              <a class="footer-text" href="{% url 'our-services' %}">Our Services</a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">Healthcare Blog</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Find a Doctor</span>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Make an appointment</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Our Services</span>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                <span>Physical Therapy and Rehabilitation Services</span>
+                <br />
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Home Nursing Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Mental Health Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Prescription Services
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Healthcare Blog</span>
+              <a class="ofooter-text" href="{% url 'healthcare-blog' %}">
+                Latest COVID-19 Information
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Latest TYK Medical Centre
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Free Resources for Health
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Contact</span>
+              <span class="footer-text">+0391191100</span>
+              <span class="footer-text">
+                Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor, Malaysia
+              </span>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Follow</span>
+              <span class="footer-text">Instagram</span>
+              <span class="footer-text">Twitter</span>
+              <span class="footer-text">Facebook</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    var btnTop = document.getElementById('btnTop');
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        btnTop.style.display = 'block';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    }
+
+    btnTop.addEventListener('click', () => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+.title-container{
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  padding-top: 18px;
+  font-size: 40px;
+}
+.specialty-container {
+  width: 100%;
+  display: block;
+  min-height: 100vh;
+  align-content: center;
+}
+.specialty-hero{
+  height: auto;
+}
+.find-a-doctor-features {
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  max-width: var(--dl-size-size-maxwidth);
+}
+.specialty-grid-container {
+  width: 100%;
+  display: grid;
+  row-gap: 30px;
+  grid-template-columns: 1fr;
+}
+.find-a-doctor-feature-card-specialty {
+  width: 85%;
+  height: 280px;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  max-width: var(--dl-size-size-maxwidth);
+  box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
+  transition: 0.3s;
+  background-color: #d4deca;;
+  margin-right: auto;
+  margin-left: auto;
+}
+.find-a-doctor-feature-card-specialty:hover {
+  transform: scale(1.02);
+}
+.image1 {
+  width: 198px;
+  height: 198px;
+  margin-top: auto;
+  margin-bottom: auto;
+  object-fit: cover;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.doctors-information-container02 {
+  width: auto;
+  height: auto;
+  margin-left: var(--dl-space-space-twounits);
+  margin-top:-10px;
+}
+.doctors-information-text12 {
+  font-size: 1.5em;
+}
+.doctors-information-text13 {
+  font-size: 16px;
+  line-height: 2;
+}
+.doctor-detail{
+  display: inline-block;
+  width: 120px;
+}

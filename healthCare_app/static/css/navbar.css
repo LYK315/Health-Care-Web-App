@@ -1,0 +1,311 @@
+.brand-Name {
+  font-size: 15px;
+  font-style: normal;
+  font-family: Urbanist;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.navbar-image {
+  width: 22px;
+  object-fit: cover;
+  margin-right: 14px;
+}
+
+.navbar-text01 {
+  color: var(--dl-color-scheme-orange100);
+}
+
+nav {
+  background: white;
+  height: 71px;
+  display: block;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+nav .navbar-logo {
+  float: left;
+  color: black;
+  font-size: 27px;
+  font-weight: 600;
+  padding-left: 60px;
+  padding-top: 26px;
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  float: right;
+  margin-right: 40px;
+}
+
+/* Change Logout BG Color */
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  background: transparent;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  line-height: 70px;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 3px;
+}
+
+nav ul li a:hover {
+  color: yellowgreen;
+}
+
+nav ul ul li a:hover {
+  color: yellowgreen;
+  box-shadow: none;
+}
+
+/* Change Logout BG Color */
+nav ul ul {
+  position: absolute;
+  top: 90px;
+  border-width: 0;
+  background: transparent;
+  border-top: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: top .3s;
+}
+
+nav ul li:hover>ul {
+  background: transparent;
+  z-index: 1;
+  top: 65px;
+  opacity: 1;
+  visibility: visible;
+}
+
+nav ul ul ul {
+  border-top: none;
+}
+
+.navbar-text {
+  color: var(--dl-color-scheme-green80);
+  font-size: 16px;
+  font-family: Titillium Web;
+  font-weight: 600;
+}
+
+/* Change Logout BG Color */
+nav ul ul li {
+  width: 110px;
+  float: none;
+  display: list-item;
+  border-bottom: transparent;
+  text-align: center;
+}
+
+nav ul ul li a {
+  line-height: 50px;
+}
+
+nav ul ul ul li {
+  position: relative;
+  top: -70px;
+  left: 150px;
+}
+
+.show,
+.icon,
+nav input {
+  display: none;
+}
+
+nav ul ul li a {
+  background: white;
+  padding: 7px 20px;
+  border-radius: 8px;
+  border: 2px solid;
+}
+
+nav ul ul li .navbar-text-1 {
+  color: #006400;
+  font-size: 15px;
+  font-family: Titillium Web;
+  font-weight: 700;
+}
+
+@media all and (max-width: 1180px) {
+  nav ul ul li {
+    width: 110px;
+    padding-left: 40px;
+    display: list-item;
+    border-bottom: transparent;
+    text-align: left;
+  }
+
+  nav ul ul li .navbar-text-1 {
+    color: var(--dl-color-scheme-green80);
+    font-size: 15px;
+    font-family: Titillium Web;
+    font-weight: 700;
+  }
+
+  nav ul ul li a {
+    background: transparent;
+    border: none;
+  }
+
+  nav ul {
+    float: left;
+  }
+
+  nav .home-logo {
+    padding-left: 50px;
+    width: 100%;
+  }
+
+  nav ul li,
+  nav ul ul li {
+    z-index: 1;
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+  }
+
+  /* Change Logout BG Color */
+  nav ul li {
+    top: 23px;
+    background: white;
+    border-bottom: 1px solid green;
+  }
+
+  nav ul ul li {
+    top: 0px;
+    background-color: gainsboro;
+    border-top: 1px solid green;
+  }
+
+  nav ul ul {
+    top: 70px;
+    position: static;
+    border-top: none;
+    float: none;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav ul ul ul li {
+    position: static;
+  }
+
+  nav ul ul li {
+    border-bottom: 0px;
+  }
+
+  nav ul ul a {
+    padding-left: 40px;
+  }
+
+  nav ul ul ul a {
+    padding-left: 80px;
+  }
+
+  .show {
+    display: block;
+    color: black;
+    font-size: 15px;
+    padding: 0 15px;
+    line-height: 70px;
+    cursor: pointer;
+    margin-bottom: 0px;
+    font-family: Titillium Web;
+    font-weight: 600;
+  }
+
+  .show:hover {
+    color: yellowgreen;
+  }
+
+  .icon {
+    display: block;
+    color: black;
+    position: absolute;
+    right: 40px;
+    line-height: 70px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  nav ul li a:hover {
+    box-shadow: none;
+  }
+
+  .show+a,
+  ul {
+    display: none;
+  }
+
+  [id^=btn]:checked+ul {
+    display: block;
+  }
+
+  .btn-register {
+    color: var(--dl-color-scheme-green80);
+    font-size: 15px;
+    font-family: Titillium Web;
+    font-weight: 600;
+    border:none;
+    border-color: var(--dl-color-scheme-green100);
+    background-color: var(--dl-color-scheme-white);
+  }
+
+  .btn-register:hover {
+    color: yellowgreen !important;
+    background-color: white !important;
+  }
+}
+
+  .btn-register {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-width: 2px;
+    border-radius: 32px;
+    transition: 0.3s;
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dl-color-scheme-green100);
+    border-color: var(--dl-color-scheme-green100);
+    background-color: var(--dl-color-scheme-white);
+  }
+
+  .btn-register:hover {
+    color: var(--dl-color-scheme-white);
+    background-color: var(--dl-color-scheme-orange100);
+  }
+
+  .btn-contactus {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-width: 2px;
+    border-radius: 32px;
+    transition: 0.3s;
+    font-family: Lexend;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dl-color-scheme-white);
+    border-color: var(--dl-color-scheme-green100);
+    background-color: var(--dl-color-scheme-green100);
+  }
+
+  .btn-contactus:hover {
+    color: var(--dl-color-scheme-green100);
+    background-color: var(--dl-color-scheme-lightgreen);
+  }

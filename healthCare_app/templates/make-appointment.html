@@ -1,0 +1,514 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TYK Medical Centre</title>
+
+  <!-- Icons Fontawesome 5.11.2 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <!-- Icons Fontawsome 4.7.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+    data-tag="font" />
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Date Picker Flatpickr -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link href="{% static 'css/make-appointment.css' %}" type="text/css" rel="stylesheet" />
+  <link href="{% static 'css/navbar.css' %}" type="text/css" rel="stylesheet" />
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<style data-tag="reset-style-sheet">
+  html {
+    line-height: 1.15;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+  }
+
+  p,
+  li,
+  ul,
+  pre,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  figure,
+  blockquote,
+  figcaption {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    background-color: transparent;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+
+  button:-moz-focus,
+  [type="button"]:-moz-focus,
+  [type="reset"]:-moz-focus,
+  [type="submit"]:-moz-focus {
+    outline: 1px dotted ButtonText;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  input {
+    padding: 2px 4px;
+  }
+
+  img {
+    display: block;
+  }
+
+  html {
+    scroll-behavior: smooth
+  }
+</style>
+
+<style data-tag="default-style-sheet">
+  html {
+    font-family: Titillium Web;
+    font-size: 16px;
+  }
+
+  body {
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.15;
+    color: var(--dl-color-scheme-green100);
+    background-color: var(--dl-color-scheme-yellow20);
+  }
+</style>
+
+<body>
+
+  <div class="body-container">
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="navbar-logo">
+        <img alt="image" src="{% static 'public/playground_assets/group_2.svg' %}" class="navbar-image" />
+        <a class="brand-Name" href="{% url 'index' %}">
+          <span class="navbar-text01">TYK</span>
+          <span>Medical Centre</span>
+        </a>
+      </div>
+
+      <!-- Hamburger Menu Icon -->
+      <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+      </label>
+
+      <input type="checkbox" id="btn">
+      <ul>
+        <li><a href="{% url 'index' %}" class="navbar-text">Home</a></li>
+        <li><a href="{% url 'find-a-doctor' %}" class="navbar-text">Find A Doctor</a></li>
+        <li><a href="{% url 'our-services' %}" class="navbar-text">Our Services</a></li>
+        <li><a href="{% url 'healthcare-blog' %}" class="navbar-text">Healthcare Blog</a></li>
+
+        {% if 'uid' in request.session %}
+        <li>
+          <label for="btn-1" class="show">{{ usrDetail.name }}</label>
+          <a href="#" class="btn-register">{{ usrDetail.name }}</a>
+          <input type="checkbox" id="btn-1" class="checkBtn">
+          <ul>
+            <li btn-logout><a href="{% url 'logout' %}" class="navbar-text-1">Log Out</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li><a href="{% url 'register' %}" class="btn-register">Log In / Register</a></li>
+        {% endif %}
+
+        <li>
+          <label for="btn-2" class="show">Contact Us</label>
+          <a href="https://wa.me/message/FDT76UARAL22O1" class="btn-contactus" target="_blank">Contact Us</a>
+          <input type="checkbox" id="btn-2" onclick="parent.open('https://wa.me/message/FDT76UARAL22O1')">
+        </li>
+      </ul>
+    </nav>
+
+    <div class="makeAppt-container">
+      <h1>Make An Appointment</h1><br>
+
+      <!-- Process Steps Indicator -->
+      <div class="py-5">
+        <div class="order-container d-flex justify-content-evenly">
+          <span class="order-style order-line order-selected" id="step_1">1</span>
+          <span class="order-style order-line" id="step_2">2</span>
+          <span class="order-style" id="step_3">3</span>
+        </div>
+
+        <div class="order-container-text d-flex justify-content-evenly ">
+          <span>Appointment Detail</span>
+          <span>Patient Detail</span>
+          <span>Submit Request</span>
+        </div>
+      </div>
+
+      <form action="/make-appointment/?sendMail=1" method="post" class="form-appointment py-3"
+        onsubmit="return submitRequest()">
+
+        <!-- Step 1 Appointment Information -->
+        <div id="appointment-info">
+          <h4>Appointment's Information</h4><br><br>
+          {% csrf_token %}
+          <div class="py-3">
+            <label for="doctors" class="input-label">Request Appointment With</label><br>
+            <select name="doctors" id="doctors" class="select-doctor custom-select">
+              <option value="0">Select a Doctor</option>
+              {% for id, name in doctorList %}
+              <option value="{{name}}">Dr. {{name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="select-date-container py-4">
+            <div>
+              <label for="date_1" class="input-label">DATE OPTION 1 (REQURIED)</label><br>
+              <input type="date" placeholder="Select a Date" id="date_1" class="info-appointment" name="date1">
+            </div>  
+
+            <div>
+              <label for="date_2" class="input-label">DATE OPTION 2 (REQURIED)</label><br>
+              <input type="date" placeholder="Select a Date" id="date_2" class="info-appointment" name="date2">
+            </div>
+          </div>
+
+          <div class="col-13 py-4">
+            <label for="message" class="input-label">Medical Concerns (REQURIED)</label><br>
+            <textarea id="message" class="form-control" rows="5" placeholder="Enter message.."
+              name="message"></textarea>
+          </div>
+
+          {% if selectDoctor %}
+          <script>
+            $('#doctors').val('{{ selectDoctor }}');
+            $('#doctors').focus();
+          </script>
+          {% endif %}
+
+          <button type="button" class="btn-next" id="btn-next" onclick="next()">Next</button>
+        </div>
+
+        <!-- Step 2 Patient Information -->
+        <div id="patient-info" hidden>
+          <h4>Patient's Information</h4><br>
+          {% csrf_token %}
+
+          <div class="py-4">
+            <label for="name" class="input-label">Full Name (REQUIRED)</label><br>
+            <input type="text" placeholder="eg. Benjamin Jian Wei" class="info-patient-name" id="name" name="name">
+          </div>
+
+          <div class="select-date-container py-4">
+            <div>
+              <label for="email" class="input-label">Email Address (REQURIED)</label><br>
+              <input type="email" placeholder="eg. benjamin@live.com" class="info-patient" id="email" name="email">
+            </div>
+
+            <div>
+              <label for="phone" class="input-label">Phone Number (REQURIED)</label><br>
+              <input type="text" placeholder="eg. 60123456789" class="info-patient" id="phone" name="phone">
+            </div>
+          </div>
+
+          <div class="select-date-container py-4">
+            <div>
+              <label for="gender" class="input-label">Gender (REQUIRED)</label><br>
+              <select name="gender" class="info-patient custom-select" id="gender">
+                <option value="0">Select Your Gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="dob" class="input-label">Date of Birth (REQURIED)</label><br>
+              <input type="date" placeholder="eg. 1997-11-20" class="info-patient" id="dob" name="dob">
+            </div>
+          </div>
+
+          <div class="btn-container">
+            <button type="button" class="btn-next" id="btn-back">Back</button>
+            <button type="submit" class="btn-next" id="btn-submit">Submit</button>
+          </div>
+
+          {% if 'uid' in request.session %}
+          <script>
+            $('#name').val('{{ usrDetail.name }}');
+            $('#email').val('{{ usrDetail.email }}');
+            $('#phone').val('{{ usrDetail.phone }}');
+            $('#gender').val('{{ usrDetail.gender }}');
+            $('#dob').val('{{ usrDetail.dob }}');
+          </script>
+          {% endif %}
+
+        </div>
+      </form>
+
+      <!-- Step 3 Completed -->
+      <div class="step3-container" id="completed" hidden>
+        <p class="step3-text">Thank you for requesting an appointment with TYK Medical Centre. Your request has been
+          successfully submitted and we will contact you soon to confirm your doctor and final appointment date. We look
+          forward to seeing you and have a pleasant day!</p>
+
+        <p class="step3-text py-5">Kindly note that this form is not applicable for medical emergency or scheduling for
+          an appointment on the same day. If you are planning to visit us within 24 hours, please contact our general
+          line at +603-911 91100.</p>
+
+        <a href="{% url 'index' %}" class="btn-next" id="btn-home">Back to Home Page</a>
+      </div>
+
+      {% if sentMail == 1 %}
+      <script>
+        $('#appointment-info').attr("hidden", "hidden");
+        $('#completed').removeAttr("hidden");
+        $('#step_1').removeClass("order-selected");
+        $('#step_3').addClass("order-selected");
+      </script>
+      {% endif %}
+    </div>
+
+    <button class="btn-top" id="btnTop"><span class="fa fa-angle-up"></span></button>
+
+    <br><br>
+    <!-- Footer -->
+    <footer class="footer-container">
+      <div class="footer-links-container">
+        <div class="footer-content-container">
+          <div class="footer-column">
+            <a class="footer-text-title">Home</a>
+            <a class="footer-text" href="{% url 'index' %}">Home</a>
+            <a class="footer-text" href="{% url 'find-a-doctor' %}">Find a Doctor</a>
+            <a class="footer-text" href="{% url 'our-services' %}">Our Services</a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">Healthcare Blog</a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Find a Doctor</span>
+            <a class="footer-text" href="{% url 'find-a-doctor' %}">Make an appointment</a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Our Services</span>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              <span>Physical Therapy and Rehabilitation Services</span>
+              <br />
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Home Nursing Services
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Mental Health Services
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Prescription Services
+            </a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Healthcare Blog</span>
+            <a class="ofooter-text" href="{% url 'healthcare-blog' %}">
+              Latest COVID-19 Information
+            </a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">
+              Latest TYK Medical Centre
+            </a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">
+              Free Resources for Health
+            </a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Contact</span>
+            <span class="footer-text">+0391191100</span>
+            <span class="footer-text">
+              Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor, Malaysia
+            </span>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Follow</span>
+            <span class="footer-text">Instagram</span>
+            <span class="footer-text">Twitter</span>
+            <span class="footer-text">Facebook</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    var sendMail = 0;
+
+    flatpickr("input[type=date", {
+      minDate: "today",
+      maxDate: new Date().fp_incr(14),
+    });
+
+    flatpickr("#dob", {});
+
+    $('#btn-back').click(function () {
+      $('#patient-info').attr("hidden", "hidden");
+      $('#appointment-info').removeAttr("hidden");
+      $('#step_2').removeClass("order-selected");
+      $('#step_1').addClass("order-selected");
+    });
+
+    function next() {
+      var drID = $('#doctors option:selected').text();
+      var date_1 = $('#date_1').val();
+      var date_2 = $('#date_2').val();
+      var msg = $('#message').val();
+
+      if (drID == "Select a Doctor") {
+        alert("You must Select a Doctor.");
+        $('#doctors').focus();
+      }
+      else if (!date_1) {
+        alert("You must select Date Option 1.");
+        $('#date_1').focus();
+      }
+      else if (!date_2) {
+        alert("You must Select Date Option 2.");
+        $('#date_2').focus();
+      }
+      else if (date_1 == date_2) {
+        alert("(Date Option 1) & (Date Option 2) must not be same.")
+        $('#date_2').focus();
+      }
+      else if (!msg) {
+        alert("You must Enter Medical Concern.");
+        $('#message').focus();
+      }
+      else {
+        $('#appointment-info').attr("hidden", "hidden");
+        $('#patient-info').removeAttr("hidden");
+        $('#step_1').removeClass("order-selected");
+        $('#step_2').addClass("order-selected");
+      }
+    }
+
+    function submitRequest() {
+      var fullName = $('#name').val();
+      var email = $('#email').val();
+      var phone = $('#phone').val();
+      var gender = $('#gender option:selected').text();
+      var dob = $('#dob').val();
+      sendMail = 1;
+
+      if (!fullName) {
+        alert("You must enter Full Name.")
+        $('#name').focus();
+      }
+      else if (!email) {
+        alert("You must Enter Email Address.")
+        $('#email').focus();
+      }
+      else if (!phone) {
+        alert("You must Enter Phone Number.")
+        $('#phone').focus();
+      }
+      else if (gender == 'Select Your Gender') {
+        alert("You must Select Gender.")
+        $('#gender').focus();
+      }
+      else if (!dob) {
+        alert("You must Select Date of Birth.")
+        $('#dob').focus();
+      }
+      else
+        return true;
+      return false;
+    }
+  
+    var btnTop = document.getElementById('btnTop');
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction (){
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+        btnTop.style.display = 'block';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    }
+
+    btnTop.addEventListener('click', ()=>{
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+
+</body>
+
+</html>

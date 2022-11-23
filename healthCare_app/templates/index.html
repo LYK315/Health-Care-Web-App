@@ -1,0 +1,560 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TYK Medical Centre</title>
+
+  <!-- Fontawesome 5.11.2 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Titillium Web;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-scheme-green100);
+      background-color: var(--dl-color-scheme-yellow20);
+    }
+  </style>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+    data-tag="font" />
+  
+    
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+  <link href="{% static 'css/home.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="home-container">
+    <nav>
+      <div class="navbar-logo">
+        <img alt="image" src="{% static 'public/playground_assets/group_2.svg' %}" class="navbar-image" />
+        <a class="brand-Name" href="{% url 'index' %}">
+          <span class="navbar-text01">TYK</span>
+          <span>Medical Centre</span>
+        </a>
+      </div>
+
+      <!-- Hamburger Menu Icon -->
+      <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+      </label>
+
+      <input type="checkbox" id="btn">
+      <ul>
+        <li><a href="{% url 'index' %}" class="navbar-text">Home</a></li>
+        <li><a href="{% url 'find-a-doctor' %}" class="navbar-text">Find A Doctor</a></li>
+        <li><a href="{% url 'our-services' %}" class="navbar-text">Our Services</a></li>
+        <li><a href="{% url 'healthcare-blog' %}" class="navbar-text">Healthcare Blog</a></li>
+
+        {% if 'uid' in request.session %}
+        <li>
+          <label for="btn-1" class="show">{{ usrDetail.name }}</label>
+          <a href="#" class="btn-register">{{ usrDetail.name }}</a>
+          <input type="checkbox" id="btn-1" class="checkBtn">
+          <ul>
+            <li btn-logout><a href="{% url 'logout' %}" class="navbar-text-1">Log Out</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li><a href="{% url 'register' %}" class="btn-register">Log In / Register</a></li>
+        {% endif %}
+
+        <li>
+          <label for="btn-2" class="show">Contact Us</label>
+          <a href="https://wa.me/message/FDT76UARAL22O1" class="btn-contactus" target="_blank">Contact Us</a>
+          <input type="checkbox" id="btn-2" onclick="parent.open('https://wa.me/message/FDT76UARAL22O1')">
+        </li>
+      </ul>
+    </nav>
+
+    <div class="home-hero hero-container section-container">
+      <div class="home-max-width1 max-width">
+        <div class="home-content">
+          <h1 class="home-title">
+            <span>Our</span>
+            <span class="home-text08">Mission</span>
+            <span class="home-text09"></span>
+            <span>&amp;</span>
+            <span class="home-text11">Vision</span>
+          </h1>
+          <span class="home-description">
+            <span>
+              “To inspire hope and contribute to health and well-being by
+              providing the best care to every patient through integrated
+              clinical practice, education and research.”
+            </span>
+            <br />
+            <br />
+            <span>
+              “Our vision is to be the unmatched leader in improving quality
+              and reducing the cost of health care for patients in the
+              communities we serve.”
+            </span>
+            <br />
+          </span>
+          <div class="home-container01">
+            <a class="button button-gradient" href="{% url 'make-appointment' %}">Make Appointment</a>
+          </div>
+        </div>
+        <div class="home-image1">
+          <img alt="image"
+            src="https://images.unsplash.com/photo-1592250930943-b1cc767cac61?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE4fHxtZWRpY2FsJTIwY2VudGVyfGVufDB8fHx8MTY2NzQxNjM0MA&amp;ixlib=rb-4.0.3&amp;h=700"
+            class="home-hero-image" />
+        </div>
+      </div>
+    </div>
+    <div class="home-section section-container">
+      <div class="home-max-width2 max-width">
+        <div class="home-image2">
+          <img alt="image"
+            src="https://images.unsplash.com/photo-1606318313647-137d1f3b4d3c?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEzfHxkb2N0b3JzfGVufDB8fHx8MTY2NzQ3NTIyNg&amp;ixlib=rb-4.0.3&amp;w=1200"
+            class="home-hero-image1" />
+        </div>
+        <div class="home-content1">
+          <h1 class="home-text17">About Us</h1>
+          <span class="home-text18">
+            <span class="home-text19">
+              TYK Medical Centre was established in September of 2022 in
+              Jalan Gasing Selatan, Selangor, Malaysia. We are one of the
+              newest medical center in the country and we provide all types
+              of services for everyone.&nbsp;
+            </span>
+            <br class="home-text20" />
+            <br class="home-text21" />
+            <span class="home-text22">Address :</span>
+            <span class="home-text23">
+              No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor,
+              Malaysia
+            </span>
+            <br class="home-text24" />
+          </span>
+          <div class="home-container02">
+            <a class="button-secondary button bg-transparent" href="{% url 'about-us' %}">
+              Read more
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-section1 section-container">
+      <div class="home-max-width3 max-width">
+        <div class="home-content2">
+          <h1 class="home-text25">
+            <span>Explore our</span>
+            <span class="home-text27">services</span>
+          </h1>
+          <span class="home-text28">
+            Check out our services that we provide to patients. We are
+            committed to serve the best quality to our patients!
+          </span>
+          <div class="home-container03">
+            <a class="button-secondary button bg-transparent" href="{% url 'our-services' %}">
+              See more
+            </a>
+          </div>
+        </div>
+        <div class="home-image3">
+          <img alt="image"
+            src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDZ8fG1lZGljYWwlMjBzZXJ2aWNlc3xlbnwwfHx8fDE2Njc0NzQ0NTQ&amp;ixlib=rb-4.0.3&amp;w=1200"
+            class="home-hero-image2" />
+        </div>
+      </div>
+    </div>
+    <div class="home-section2 section-container">
+      <div class="home-max-width4 max-width">
+        <div class="home-image4">
+          <img alt="image"
+            src="https://images.unsplash.com/photo-1522241112606-b5d35a468795?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDJ8fGFwcG9pbnRtZW50fGVufDB8fHx8MTY2NzQ3NjAxNA&amp;ixlib=rb-4.0.3&amp;w=1200"
+            class="home-hero-image3" />
+        </div>
+        <div class="home-content3">
+          <h1 class="home-text29">Make an appointment with us today!</h1>
+          <div class="home-step">
+            <div class="home-number">
+              <span class="home-text30">1</span>
+            </div>
+            <div class="home-container04">
+              <span class="home-title1">Search Medical Speciality</span>
+              <span class="home-text31">
+                First step is to search for a particular medical speciality.
+              </span>
+            </div>
+          </div>
+          <div class="home-step1">
+            <div class="home-number1">
+              <span class="home-text32">2</span>
+            </div>
+            <div class="home-container05">
+              <span class="home-title2">Select a Doctor</span>
+              <span class="home-text33">
+                After choosing a medical speciality, select a doctor from
+                the list of options.&nbsp;
+              </span>
+            </div>
+          </div>
+          <div class="home-step2">
+            <div class="home-number2">
+              <span class="home-text34">3</span>
+            </div>
+            <div class="home-container06">
+              <span class="home-title3">Create an appointment</span>
+              <span class="home-text35">
+                The final step is to find an available time and date and
+                make an appointment.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-stats">
+      <div class="home-stat">
+        <h1 class="home-text36">
+          <span>50</span>
+          <span>+</span>
+        </h1>
+        <span class="home-text39">Medical Specialities</span>
+      </div>
+      <div class="home-stat1">
+        <h1 class="home-text40">&gt;1000</h1>
+        <span class="home-text41">Healthcare Professionals</span>
+      </div>
+      <div class="home-stat2">
+        <h1 class="home-text42">115</h1>
+        <span class="home-text43">Licensed Beds</span>
+      </div>
+      <div class="home-stat3">
+        <h1 class="home-text44">7</h1>
+        <span class="home-text45">
+          <span>Operating Theatres</span>
+          <br />
+        </span>
+      </div>
+    </div>
+    <div class="home-section3 section-container">
+      <span class="home-text48">
+        Check out our healthcare blog where we talk about recent medical
+        news
+      </span>
+      <div class="home-max-width5 max-width">
+        <h1 class="home-text49">Healthcare Blog</h1>
+        <div class="home-cards-container">
+          <div class="home-card">
+            <div class="home-info">
+              <a class="home-text50" href="{% url 'healthcare-blog' %}">Latest COVID-19 Information</a>
+            </div>
+          </div>
+          <div class="home-card1">
+            <div class="home-info1">
+              <a class="home-text51" href="{% url 'healthcare-blog' %}">
+                Latest TYK Medical Centre Updates
+              </a>
+            </div>
+          </div>
+          <div class="home-card2">
+            <div class="home-info2">
+              <a class="home-text52" href="{% url 'healthcare-blog' %}">
+                <span>Free Resources for your Health</span>
+                <br />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="home-section4 section-container">
+      <div class="home-max-width6 max-width">
+        <div class="home-f-a-q">
+          <div class="home-questions">
+            <span class="home-text55 before-Heading">faq</span>
+            <h1 class="home-text56">
+              <span class="home-text57">Frequently Asked</span>
+              <br />
+              <span class="home-text59">Questions</span>
+            </h1>
+            <div data-role="Accordion" class="question">
+              <div data-type="accordion-header" class="home-trigger">
+                <span class="home-text60">
+                  What are the visiting hours?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="home-icon02">
+                  <path d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"></path>
+                </svg>
+              </div>
+              <div data-type="accordion-content" class="question-content">
+                <span class="home-text61">
+                  The visiting hours are from 9am to 5pm (Monday-Friday).
+                  Weekends (Saturday & Sunday) are from 9am to 9pm.
+                </span>
+              </div>
+            </div>
+            <div data-role="Accordion" class="question home-question1">
+              <div data-type="accordion-header" class="home-trigger1">
+                <span class="home-text62">
+                  Can visitors stay overnight?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="home-icon04">
+                  <path d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"></path>
+                </svg>
+              </div>
+              <div data-type="accordion-content" class="question-content">
+                <span class="home-text63">
+                  Only one visitor is allowed to stay overnight with the
+                  patient. Please visit
+                  the hospital office for an
+                  official overnight pass.
+                </span>
+              </div>
+            </div>
+            <div data-role="Accordion" class="question">
+              <div data-type="accordion-header" class="home-trigger2">
+                <span class="home-text64">
+                  Can I park my car at the medical centre?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="home-icon06">
+                  <path d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"></path>
+                </svg>
+              </div>
+              <div data-type="accordion-content" class="question-content">
+                <span class="home-text65">Yes, you can park your car at our hospital parking
+                  lot located at Lower Ground 1 and
+                  Lower Ground 2.
+                </span>
+              </div>
+            </div>
+            <div data-role="Accordion" class="question">
+              <div data-type="accordion-header" class="home-trigger3">
+                <span class="home-text66">
+                  What if I can't attend my appointment?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="home-icon08">
+                  <path d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"></path>
+                </svg>
+              </div>
+              <div data-type="accordion-content" class="question-content">
+                <span class="home-text67">
+                  If you cannot keep your appointment, or you need to change the time and date,
+                  please telephone the number on your appointment letter as soon as possible.
+                  This will allow us to rearrange your appointment time and to give yours to someone else.
+                </span>
+              </div>
+            </div>
+          </div>
+          <img alt="image"
+            src="https://images.unsplash.com/photo-1518644730709-0835105d9daa?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE5fHxxdWVzdGlvbnxlbnwwfHx8fDE2Njc0Nzc1OTY&amp;ixlib=rb-4.0.3&amp;w=700"
+            class="home-image5" />
+        </div>
+        <div class="home-banner">
+          <span class="home-text68">Ask us anything health related.</span>
+          <h1 class="home-text69">Make an Enquiry</h1>
+          <div class="home-btns">
+            <a class="home-button5 button button-gradient" href="{% url 'enquiry' %}">
+              Ask Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-top" id="btnTop"><span class="fa fa-angle-up"></span></button>
+    
+    <footer class="footer-container">
+      <div class="footer-links-container">
+        <div class="footer-content-container">
+          <div class="footer-column">
+            <a class="footer-text-title">Home</a>
+            <a class="footer-text" href="{% url 'index' %}">Home</a>
+            <a class="footer-text" href="{% url 'find-a-doctor' %}">Find a Doctor</a>
+            <a class="footer-text" href="{% url 'our-services' %}">Our Services</a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">Healthcare Blog</a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Find a Doctor</span>
+            <a class="footer-text" href="{% url 'find-a-doctor' %}">Make an appointment</a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Our Services</span>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              <span>Physical Therapy and Rehabilitation Services</span>
+              <br />
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Home Nursing Services
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Mental Health Services
+            </a>
+            <a class="footer-text" href="{% url 'our-services' %}">
+              Prescription Services
+            </a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Healthcare Blog</span>
+            <a class="ofooter-text" href="{% url 'healthcare-blog' %}">
+              Latest COVID-19 Information
+            </a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">
+              Latest TYK Medical Centre
+            </a>
+            <a class="footer-text" href="{% url 'healthcare-blog' %}">
+              Free Resources for Health
+            </a>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Contact</span>
+            <span class="footer-text">+0391191100</span>
+            <span class="footer-text">
+              Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor, Malaysia
+            </span>
+          </div>
+          <div class="footer-column">
+            <span class="footer-text-title">Follow</span>
+            <span class="footer-text">Instagram</span>
+            <span class="footer-text">Twitter</span>
+            <span class="footer-text">Facebook</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    var btnTop = document.getElementById('btnTop');
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction (){
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+        btnTop.style.display = 'block';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    }
+
+    btnTop.addEventListener('click', ()=>{
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+
+</body>
+
+</html>

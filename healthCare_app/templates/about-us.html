@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>About Us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Fontawesome 5.11.2 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Titillium Web;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-scheme-green100);
+      background-color: var(--dl-color-scheme-yellow20);
+
+    }
+  </style>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+    data-tag="font" />
+  <!--This is the head section-->
+  <!-- <script type="text/javascript"> ... </script> -->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/about-us.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div>
+    <div class="about-us-container">
+
+      <nav>
+        <div class="navbar-logo">
+          <img alt="image" src="{% static 'public/playground_assets/group_2.svg' %}" class="navbar-image" />
+          <a class="brand-Name" href="{% url 'index' %}">
+            <span class="navbar-text01">TYK</span>
+            <span>Medical Centre</span>
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <label for="btn" class="icon">
+          <span class="fa fa-bars"></span>
+        </label>
+
+        <input type="checkbox" id="btn">
+        <ul>
+          <li><a href="{% url 'index' %}" class="navbar-text">Home</a></li>
+          <li><a href="{% url 'find-a-doctor' %}" class="navbar-text">Find A Doctor</a></li>
+          <li><a href="{% url 'our-services' %}" class="navbar-text">Our Services</a></li>
+          <li><a href="{% url 'healthcare-blog' %}" class="navbar-text">Healthcare Blog</a></li>
+
+          {% if 'uid' in request.session %}
+          <li>
+            <label for="btn-1" class="show">{{ usrDetail.name }}</label>
+            <a href="#" class="btn-register">{{ usrDetail.name }}</a>
+            <input type="checkbox" id="btn-1" class="checkBtn">
+            <ul>
+              <li btn-logout><a href="{% url 'logout' %}" class="navbar-text-1">Log Out</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li><a href="{% url 'register' %}" class="btn-register">Log In / Register</a></li>
+          {% endif %}
+
+          <li>
+            <label for="btn-2" class="show">Contact Us</label>
+            <a href="https://wa.me/message/FDT76UARAL22O1" class="btn-contactus" target="_blank">Contact Us</a>
+            <input type="checkbox" id="btn-2" onclick="parent.open('https://wa.me/message/FDT76UARAL22O1')">
+          </li>
+        </ul>
+      </nav>
+
+      <div class="about-us-hero">
+        <h1 class="about-us-text07">About Us</h1>
+        <span class="about-us-text08">
+          <span>
+            TYK Medical Centre was established in September of 2022 in Jalan
+            Gasing Selatan, Selangor, Malaysia.
+          </span>
+          <br />
+          <span>
+            We are one of the newest medical center in the country and we
+            provide all types of services for everyone.&nbsp;
+          </span>
+          <br />
+          <span>
+            Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor,
+            Malaysia
+          </span>
+        </span>
+      </div>
+      <div class="about-us-banner">
+        <span class="about-us-text14">
+          TYK Medical Centre is a fast paced, rapidly growing organisation
+          which is dedicated to helping people around the world to overcome
+          some of the greatest challenges many of us may face. From providing
+          personal independence to safe patient handling solutions, we provide
+          our customers with the tools they need to sustain an active and
+          healthy lifestyle. We are a professional, multi-generational team
+          with a wealth of experience, constantly striving to invent, create
+          and innovate. Our actions at TYK Medical Centre have a significant
+          impact on the success of the company and the lives of our customers
+          whether it be an independent user or a health care professional. Our
+          teams work towards a common goal that benefits the company and the
+          community as a whole.
+        </span>
+      </div>
+      <div class="about-us-gallery">
+        <div class="about-us-container01">
+          <div class="about-us-gallery-card">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214278850-48942bb50172?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDF8fGhvc3BpdGFsfGVufDB8fHx8MTY2NzY0MTA3MQ&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image01" />
+            <div class="about-us-container02"></div>
+          </div>
+          <div class="about-us-gallery-card01">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxob3NwaXRhbHxlbnwwfHx8fDE2Njc2NDEwNzE&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image02" />
+            <div class="about-us-container03"></div>
+          </div>
+          <div class="about-us-gallery-card02">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214273506-c2984f1d3301?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDE1fHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjQ0&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image03" />
+            <div class="about-us-container04"></div>
+          </div>
+          <div class="about-us-gallery-card03">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214276372-24e331683e78?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDh8fGRvY3RvcnxlbnwwfHx8fDE2Njc2NDE2NDQ&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image04" />
+            <div class="about-us-container05"></div>
+          </div>
+          <div class="about-us-gallery-card04">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEyfHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjQ0&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image05" />
+            <div class="about-us-container06"></div>
+          </div>
+          <div class="about-us-gallery-card05">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214280465-a40313304801?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDIyfHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjQ0&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image06" />
+            <div class="about-us-container07"></div>
+          </div>
+          <div class="about-us-gallery-card06">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1589279003513-467d320f47eb?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDQwfHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjkx&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image07" />
+            <div class="about-us-container08"></div>
+          </div>
+          <div class="about-us-gallery-card07">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDQ3fHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjkx&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image08" />
+            <div class="about-us-container09"></div>
+          </div>
+          <div class="about-us-gallery-card08">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1587500154541-1cafd74f0efc?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDY3fHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNzQw&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image09" />
+            <div class="about-us-container10"></div>
+          </div>
+          <div class="about-us-gallery-card09">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1579165466949-3180a3d056d5?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDM1fHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNjkx&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image10" />
+            <div class="about-us-container11"></div>
+          </div>
+          <div class="about-us-gallery-card10">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1666214277767-b8c2a7b4c064?ixid=Mnw5MTMyMXwxfDF8c2VhcmNofDU3fHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNzQw&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image11" />
+            <div class="about-us-container12"></div>
+          </div>
+          <div class="about-us-gallery-card11">
+            <img alt="image"
+              src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDcyfHxkb2N0b3J8ZW58MHx8fHwxNjY3NjQxNzQw&amp;ixlib=rb-4.0.3&amp;w=1200"
+              class="about-us-image12" />
+            <div class="about-us-container13"></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-us-banner1">
+        <h1 class="about-us-text15">
+          <span>Our</span>
+          <span class="about-us-text17">Values</span>
+        </h1>
+        <span class="about-us-text18">
+          <span class="about-us-text19">Compassion</span>
+          <br class="about-us-text20" />
+          <span class="about-us-text21">
+            We are always sensitive to our patients’ needs
+          </span>
+          <br class="about-us-text22" />
+          <br class="about-us-text23" />
+          <span class="about-us-text24">Humility</span>
+          <br class="about-us-text25" />
+          <span class="about-us-text26">
+            We believe in being humble, polite and respectful
+          </span>
+          <br class="about-us-text27" />
+          <br class="about-us-text28" />
+          <span class="about-us-text29">Excellence</span>
+          <br class="about-us-text30" />
+          <span class="about-us-text31">
+            We strive for excellence and take pride in all that we do
+          </span>
+          <br class="about-us-text32" />
+          <br class="about-us-text33" />
+          <span class="about-us-text34">Respect</span>
+          <br class="about-us-text35" />
+          <span class="about-us-text36">
+            We respect every individual and are always professional in our
+            conduct and behaviour
+          </span>
+          <br class="about-us-text37" />
+          <br class="about-us-text38" />
+          <span class="about-us-text39">Integrity</span>
+          <br class="about-us-text40" />
+          <span class="about-us-text41">
+            We believe in doing the right thing at all times
+          </span>
+        </span>
+      </div>
+
+      <button class="btn-top" id="btnTop"><span class="fa fa-angle-up"></span></button>
+
+      <footer class="footer-container">
+        <div class="footer-links-container">
+          <div class="footer-content-container">
+            <div class="footer-column">
+              <a class="footer-text-title">Home</a>
+              <a class="footer-text" href="{% url 'index' %}">Home</a>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Find a Doctor</a>
+              <a class="footer-text" href="{% url 'our-services' %}">Our Services</a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">Healthcare Blog</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Find a Doctor</span>
+              <a class="footer-text" href="{% url 'find-a-doctor' %}">Make an appointment</a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Our Services</span>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                <span>Physical Therapy and Rehabilitation Services</span>
+                <br />
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Home Nursing Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Mental Health Services
+              </a>
+              <a class="footer-text" href="{% url 'our-services' %}">
+                Prescription Services
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Healthcare Blog</span>
+              <a class="ofooter-text" href="{% url 'healthcare-blog' %}">
+                Latest COVID-19 Information
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Latest TYK Medical Centre
+              </a>
+              <a class="footer-text" href="{% url 'healthcare-blog' %}">
+                Free Resources for Health
+              </a>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Contact</span>
+              <span class="footer-text">+0391191100</span>
+              <span class="footer-text">
+                Address : No 8, Jalan Gasing Selatan, Shah Alam, 47300, Selangor, Malaysia
+              </span>
+            </div>
+            <div class="footer-column">
+              <span class="footer-text-title">Follow</span>
+              <span class="footer-text">Instagram</span>
+              <span class="footer-text">Twitter</span>
+              <span class="footer-text">Facebook</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    var btnTop = document.getElementById('btnTop');
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        btnTop.style.display = 'block';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    }
+
+    btnTop.addEventListener('click', () => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+
+</body>
+
+</html>

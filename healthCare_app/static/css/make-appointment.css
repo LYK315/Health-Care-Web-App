@@ -1,0 +1,159 @@
+.body-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.makeAppt-container {
+  display: block;
+  margin-top: 100px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.order-container {
+  display: flex;
+  width: 730px;
+  height: 50px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10;
+}
+
+.order-container-text {
+  display: flex;
+  width: 700px;
+  height: 50px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-right: 20px;
+  font-weight: 600;
+}
+
+.order-style {
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 12px 20px 12px 20px;
+  font-weight: 750;
+  font-size: 25px;
+}
+
+.order-style:hover {
+  background: #105749;
+  color: white;
+}
+
+.order-selected{
+  background: #105749;
+  color: white;
+}
+
+.order-line::after {
+  content: '';
+  position: absolute;
+  top: 240px;
+  width: 138px;
+  margin-left: 22px;
+  border-top: 1px dashed grey;
+}
+
+.form-appointment {
+  height: auto;
+  width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.step3-container{
+  height: auto;
+  width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.step3-text{
+  font-size: 18px;
+}
+
+.select-doctor {
+  width: 100%;
+  height: 50px;
+  border: 1px solid gainsboro;
+  padding: 0 10px 0 15px;
+  background-color: white;
+}
+
+.info-appointment {
+  width: 380px;
+  height: 50px;
+  background-color: ghostwhite;
+  border: 1px solid gainsboro;
+  padding-left: 15px;
+}
+
+.info-patient {
+  width: 380px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  padding-left: 15px;
+}
+
+.info-patient-name {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  padding-left: 15px;
+}
+
+.select-date-container {
+  display: flex;
+  column-gap: 60px;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 550;
+  padding-bottom: 10px;
+}
+
+.btn-next {
+  width: fit-content;
+  border-color: transparent;
+  border-radius: 8px;
+  display: block;
+  font-size: 16px;
+  background: linear-gradient(90deg, #C7FF9B 0%, #FFF6A7 100%);
+  transition: 0.3s;
+  font-weight: 700;
+  padding: 13px 25px 13px 25px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 28px;
+}
+
+.btn-next:hover {
+  color: var(--dl-color-scheme-white);
+  background: var(--dl-color-scheme-green100);
+  border-color: var(--dl-color-scheme-green100);
+}
+
+.btn-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}

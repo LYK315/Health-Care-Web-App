@@ -1,0 +1,230 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.hero {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(135deg, #0C4237, #FFAD61, #0C4237, #FFAD61);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box {
+    width: 380px;
+    height: 400px;
+    position: relative;
+    margin: 6% auto;
+    background: #FFFEF3;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#form {
+    height: 400px;
+}
+
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-sizing: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+    background: lightblue;
+}
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: black;
+}
+
+#btn-color {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #FFAD61, #FFF6A7);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.social {
+    width: 220px;
+    margin: 30px auto;
+    text-align: center;
+    margin: 35px auto;
+    position: relative;
+    box-sizing: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+
+.social img {
+    width: 30px;
+    margin: 0 12px;
+    box-shadow: 0 0 20px 0 #7f7f7f;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.input-group-register::-webkit-scrollbar {
+    border-radius: 20%;
+    background: #F5F5F5;
+    width: 8px;
+}
+
+
+.input-group-register::-webkit-scrollbar-thumb {
+    border-radius: 20%;
+    background: #0C4237;
+    width: 5px;
+}
+
+.input-group {
+    top: 110px;
+    height: auto;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.input-group-register {
+    height: 230px;
+    overflow-y: scroll;
+    padding-right: 8px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.input-psw-icon{
+    width: 80%;
+}
+
+.input-check {
+    font-size: 12px;
+    color: red;
+}
+
+.check-gender {
+    position: relative;
+    margin: -10px;
+    padding: -10px;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #0C4237;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+}
+
+.check-box {
+    margin: 40px 10px 30px 0;
+}
+
+.span-form {
+    color: #777;
+    font-size: 12px;
+    bottom: 65px;
+    position: absolute;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}
+
+.gender {
+    font-size: 11px;
+    margin-left: 18px;
+    white-space: nowrap;
+    top: 15px;
+}
+
+.gender-title {
+    color: #777;
+    font-size: 14px;
+}
+
+form .gender-details .category {
+    display: flex;
+    height: 35px;
+    position: relative;
+    width: 55%;
+    column-gap: 100px;
+}
+
+.gender-details .category label {
+    display: flex;
+    align-items: center;
+}
+
+.gender-details .category .dot {
+    height: 12px;
+    width: 12px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    top: 15px;
+}
+
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+    border-color: #d9d9d9;
+    background: #000000;
+}
+
+form input[type="radio"] {
+    display: none;
+}
+
+.icon-eye{
+    border-bottom: 1px solid #999;
+    width: 20%;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.icon-eye:hover{
+    cursor: pointer;
+}
+
+.psw-field{
+    display: flex;
+}
+
+.hidden{
+    display: none;
+}

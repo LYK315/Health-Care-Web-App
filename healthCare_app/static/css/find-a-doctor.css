@@ -1,0 +1,522 @@
+.find-a-doctor-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.find-a-doctor-logo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.find-a-doctor-image {
+  width: 210px;
+  height: 190px;
+  margin: auto;
+  object-fit: cover;
+  border-radius: var(--dl-radius-radius-radius4);
+}
+
+.find-a-doctor-text {
+  height: 80px;
+}
+
+.find-a-doctor-text001 {
+  color: var(--dl-color-scheme-orange100);
+}
+
+.find-a-doctor-links {
+  flex: 0 0 auto;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  flex-direction: row;
+}
+
+.find-a-doctor-text003 {
+  color: var(--dl-color-scheme-green80);
+  margin-right: var(--dl-space-space-twounits);
+}
+
+.find-a-doctor-text004 {
+  color: var(--dl-color-scheme-green80);
+  margin-right: var(--dl-space-space-twounits);
+}
+
+.find-a-doctor-text005 {
+  color: var(--dl-color-scheme-green80);
+  margin-right: var(--dl-space-space-twounits);
+}
+
+.find-a-doctor-text006 {
+  color: var(--dl-color-scheme-green80);
+  margin-right: var(--dl-space-space-twounits);
+}
+
+.find-a-doctor-burger-menu {
+  fill: #105749;
+  width: 24px;
+  height: 24px;
+}
+
+.find-a-doctor-hero {
+  width: 100%;
+  height: 605px;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  position: relative;
+  max-height: 717px;
+  min-height: var(--dl-size-size-small);
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  justify-content: center;
+  background-image: url('https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI3fHxkb2N0b3IlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTY2NzQ4NDgyOA&ixlib=rb-4.0.3&w=1500');
+  background-position: center;
+}
+
+.find-a-doctor-text007 {
+  color: var(--dl-color-scheme-green100);
+  font-size: 3rem;
+  max-width: 450px;
+  margin-top: var(--dl-space-space-twounits);
+  text-align: center;
+  margin-bottom: var(--dl-space-space-twounits);
+}
+
+.find-a-doctor-button2 {
+  color: var(--dl-color-scheme-white);
+  transition: 0.3s;
+  padding-top: var(--dl-space-space-unit);
+  padding-left: var(--dl-space-space-twounits);
+  padding-right: var(--dl-space-space-twounits);
+  padding-bottom: var(--dl-space-space-unit);
+  background-color: #000000;
+}
+
+.find-a-doctor-button2:hover {
+  transform: scale(1.02);
+}
+
+.find-a-doctor-banner {
+  width: 820px;
+  height: 150px;
+  display: block;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.find-a-doctor-select {
+  color: white;
+  width: auto;
+  height: 50px;
+  background-color: var(--dl-color-scheme-green100);
+  padding-left: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-weight: 600;
+}
+
+.find-a-doctor-textinput {
+  width: 450px;
+  height: 50px;
+  padding: 0;
+  padding-left: 20px;
+  background-color: #f1f1f1;
+  width: 50%;
+  color: black;
+  font-weight: 600;
+  margin-left: -2px;
+}
+
+.find-a-doctor-button3 {
+  color: var(--dl-color-scheme-green100);
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  text-align: center;
+  transition: 0.3s;
+  font-weight: 600;
+  align-content: center;
+  padding: 0;
+  background-color: var(--dl-color-scheme-orange100);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-left: -3px;
+}
+
+.find-a-doctor-button3:hover {
+  color: var(--dl-color-scheme-white);
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.find-a-doctor-features {
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  max-width: var(--dl-size-size-maxwidth);
+  flex-direction: column;
+}
+
+.find-a-doctor-text011 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: var(--dl-space-space-threeunits);
+}
+
+.find-a-doctor-container01 {
+  width: 100%;
+  display: grid;
+  margin: auto;
+  row-gap: 25px;
+  column-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.find-a-doctor-feature-card {
+  width: 100%;
+  height: 300px;
+  display: block;
+  padding: var(--dl-space-space-unit);
+  max-width: var(--dl-size-size-maxwidth);
+  box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
+  transition: 0.3s;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #d4deca;
+  text-align: center;
+}
+
+.find-a-doctor-feature-card:hover {
+  transform: scale(1.02);
+}
+
+.find-a-doctor-features1 {
+  width: 100%;
+  height: 752px;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  max-width: var(--dl-size-size-maxwidth);
+  padding-top: 3px;
+  flex-direction: column;
+}
+
+.find-a-doctor-container02 {
+  flex: 0 0 auto;
+  width: 100%;
+  display: grid;
+  grid-gap: var(--dl-space-space-twounits);
+  align-items: flex-start;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media(max-width: 991px) {
+  .find-a-doctor-text003 {
+    margin-right: var(--dl-space-space-unit);
+  }
+
+  .find-a-doctor-text004 {
+    margin-right: var(--dl-space-space-unit);
+  }
+
+  .find-a-doctor-text005 {
+    margin-right: var(--dl-space-space-unit);
+  }
+
+  .find-a-doctor-text006 {
+    margin-right: var(--dl-space-space-halfunit);
+  }
+
+  .find-a-doctor-button {
+    margin-right: var(--dl-space-space-halfunit);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+  }
+
+  .find-a-doctor-button1 {
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+  }
+
+  .find-a-doctor-text007 {
+    font-size: 3rem;
+  }
+
+  .find-a-doctor-button2 {
+    top: 129px;
+    left: 86px;
+  }
+
+  .find-a-doctor-select {
+    top: 90px;
+    left: 209px;
+    width: var(--dl-size-size-xlarge);
+  }
+
+  .find-a-doctor-textinput {
+    width: var(--dl-size-size-xlarge);
+  }
+
+  .find-a-doctor-button3 {
+    top: 90px;
+    left: 592px;
+    color: var(--dl-color-scheme-green100);
+    width: var(--dl-size-size-xlarge);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-transform: capitalize;
+    background-color: var(--dl-color-scheme-orange100);
+  }
+
+  .find-a-doctor-text011 {
+    align-self: center;
+  }
+
+  .find-a-doctor-container01 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .find-a-doctor-text012 {
+    align-self: center;
+  }
+
+  .find-a-doctor-image {
+    align-self: center;
+  }
+
+  .find-a-doctor-text029 {
+    align-self: center;
+  }
+
+  .find-a-doctor-features1 {
+    height: 1394px;
+  }
+
+  .find-a-doctor-container02 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 767px) {
+  .find-a-doctor-text001 {
+    color: var(--dl-color-scheme-orange100);
+  }
+
+  .find-a-doctor-links {
+    display: none;
+  }
+
+  .find-a-doctor-icon {
+    fill: var(--dl-color-scheme-green100);
+  }
+
+  .find-a-doctor-hero {
+    height: 540px;
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+
+  .find-a-doctor-text007 {
+    color: var(--dl-color-scheme-green100);
+    font-size: 2.5rem;
+  }
+
+  .find-a-doctor-button2 {
+    top: 170px;
+    left: 82px;
+    font-size: 15px;
+  }
+
+  .find-a-doctor-banner {
+    height: auto;
+    width: 676px;
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+
+  .find-a-doctor-select {
+    top: 90px;
+    left: 167px;
+    width: var(--dl-size-size-large);
+    height: 45px;
+  }
+
+  .find-a-doctor-textinput {
+    width: var(--dl-size-size-large);
+    height: 45px;
+  }
+
+  .find-a-doctor-button3 {
+    width: var(--dl-size-size-large);
+    height: 45px;
+  }
+
+  .find-a-doctor-text011 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .find-a-doctor-features {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+
+  .find-a-doctor-features1 {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+}
+
+@media(max-width: 500px) {
+  .find-a-doctor-text001 {
+    color: var(--dl-color-scheme-orange100);
+  }
+
+  .find-a-doctor-hero {
+    height: 443px;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+
+  .find-a-doctor-text007 {
+    font-size: 2rem;
+  }
+
+  .find-a-doctor-button2 {
+    font-size: 13px;
+  }
+
+  .find-a-doctor-banner {
+    height: auto;
+    width: 400px;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+
+  .find-a-doctor-select {
+    top: 90px;
+    left: 55px;
+    width: 130px;
+  }
+
+  .find-a-doctor-textinput {
+    width: 123px;
+  }
+
+  .find-a-doctor-button3 {
+    top: 90px;
+    left: 299px;
+    width: 123px;
+    height: 45px;
+  }
+
+  .find-a-doctor-features {
+    width: 100%;
+    padding-top: var(--dl-space-space-halfunit);
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: var(--dl-space-space-halfunit);
+  }
+
+  .find-a-doctor-text011 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .find-a-doctor-container01 {
+    height: auto;
+    grid-gap: var(--dl-space-space-halfunit);
+  }
+
+  .find-a-doctor-text012 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text016 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text020 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text025 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text029 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text033 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text037 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text041 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-features1 {
+    height: 1327px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+
+  .find-a-doctor-container02 {
+    grid-gap: var(--dl-space-space-halfunit);
+  }
+
+  .find-a-doctor-text045 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text049 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text053 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text057 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text061 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text065 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text069 {
+    font-size: 1.2rem;
+  }
+
+  .find-a-doctor-text073 {
+    font-size: 1.2rem;
+  }
+}
